@@ -74,93 +74,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Flex与Bison用法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2025-05-08T02:49:17.146Z" itemprop="datePublished">2025-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/">Flex与Bison用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><ol>
-<li>编写a.lex文件</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">int wordCount=0;</span><br><span class="line">int numcount=0;</span><br><span class="line">%&#125;</span><br><span class="line">chars [A-Za-z\_\&#x27;\.\&quot;]</span><br><span class="line">numbers ([0-9])+</span><br><span class="line">delim [&quot; &quot;\n\t]</span><br><span class="line">whitespace &#123;delim&#125;+ </span><br><span class="line">words &#123;chars&#125;+ </span><br><span class="line">%% </span><br><span class="line">while  &#123;printf(&quot;%s\n&quot;,yytext);&#125;</span><br><span class="line">&#123;words&#125; &#123; wordCount++;  /* increase the word count by one*/ &#125; </span><br><span class="line">&#123;whitespace&#125; &#123; /* do nothing*/ &#125; </span><br><span class="line">([0-9])+ &#123; numcount++; /* one may want to add some processing           here*/ &#125; </span><br><span class="line">%%  </span><br><span class="line">void main() &#123; </span><br><span class="line">printf(&quot;ok1\n&quot;);  </span><br><span class="line">yylex(); /* start the  analysis*/  </span><br><span class="line">printf(&quot;ok2\n&quot;); </span><br><span class="line">printf(&quot;No of words: %d\n     number: %d\n&quot;, wordCount, numcount);  </span><br><span class="line">return 0;  </span><br><span class="line">&#125;</span><br><span class="line">int yywrap() </span><br><span class="line">&#123; </span><br><span class="line">return 1; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>第一步命令  <code>flex a.lex</code>得到<code>lex.yy.c</code></p>
-</li>
-<li><p>第二步命令  <code>gcc -o a lex.yy.c</code>得到<code>a.exe</code> （<strong>词法分析器</strong>）</p>
-</li>
-<li><p>待分析文件<code>b.c</code></p>
-</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">asd asdf <span class="number">23</span> q </span><br><span class="line">a1 </span><br><span class="line">b2</span><br><span class="line">!#@</span><br><span class="line"><span class="keyword">while</span></span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>使用命令 <code>a.exe &lt;b.c&gt; a.txt</code>  ， 分析结果保存在<code>a.txt</code></li>
-</ol>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ok1</span><br><span class="line">!#@while</span><br><span class="line">ok2</span><br><span class="line">No of words: 5</span><br><span class="line">    number: 3</span><br></pre></td></tr></table></figure>
-
-<p>注意在<code>cmd</code>下运行，<code>linux</code>更优，不要在<code>Powershell</code>，会有<code>&lt;</code>字符冲突</p>
-<h3 id="bison"><a href="#bison" class="headerlink" title="bison"></a>bison</h3><ol>
-<li>首先使用flex工具输入构词规则序列 ， 文件<code>token.l</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &quot;expr.tab.h&quot;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">&quot;q&quot;   return STOP;</span><br><span class="line">&quot;(&quot;   return LP;</span><br><span class="line">&quot;)&quot;   return RP;</span><br><span class="line">&quot;\+&quot;  return PLUS;</span><br><span class="line">&quot;\-&quot;  return MINUS; </span><br><span class="line">&quot;\*&quot;  return MUL; </span><br><span class="line">&quot;\/&quot;  return DIV;</span><br><span class="line"></span><br><span class="line">[0-9]+ &#123;yylval=atoi(yytext); return DIGIT;&#125; </span><br><span class="line">%%</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>使用命令 <code>flex token.l</code>，得到<code>lex.yy.c</code></li>
-<li>输入上下文无关文法，文件<code>expr.y</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%token DIGIT STOP LP RP PLUS MINUS MUL DIV</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">start: expr STOP &#123;printf(&quot;expr=%d\n&quot;, $1);  exit(1);&#125;</span><br><span class="line">;</span><br><span class="line">expr: expr PLUS expr  &#123;$$=$1+$3;&#125;</span><br><span class="line">    |expr MINUS expr  &#123;$$=$1-$3;&#125;</span><br><span class="line">    |expr MUL expr &#123;$$=$1*$3;&#125;</span><br><span class="line">    |expr DIV expr &#123;$$=$1/$3;&#125;</span><br><span class="line">    |LP expr RP  &#123;$$=$2;&#125;</span><br><span class="line">    |DIGIT &#123;$$=$1;&#125;</span><br><span class="line">;</span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">    printf(&quot;Type something followed by Return. Type &#x27;q&#x27; to end.\n&quot;);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return(yyparse());      /*Start the parser*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yyerror(s)</span><br><span class="line">char *s; &#123;</span><br><span class="line">    printf(&quot;yacc error: %s\n&quot;,s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yywrap()&#123;</span><br><span class="line">    return(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><p>第二个命令 <code>bison -d expr.y</code>, 得到 <code>expr.tab.c</code>及<code>expr.tab.h</code></p>
-</li>
-<li><p><code>gcc lex.yy.c expr.tab.c -o expr</code> 得到<strong>语法分析程序</strong><code>expr.exe</code></p>
-</li>
-<li><p>使用语法分析程序分析输入文件<code>b.c</code>   <code>expr &lt;b.c&gt; a.txt</code>， 得到<code>a.txt</code></p>
-</li>
-</ol>
-<ul>
-<li><p>输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">55+(3*20)q</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Type something followed by Return. Type &#x27;q&#x27; to end.</span><br><span class="line">expr=115</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" data-id="cmaerrn9s000016joggmnc4wi" data-title="Flex与Bison用法" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-Hexo博客搭建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="article-date">
@@ -260,6 +173,141 @@
 
 
   
+    <article id="post-Flex与Bison用法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">2025-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/">Flex与Bison用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><ol>
+<li>编写a.lex文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">int wordCount=0;</span><br><span class="line">int numcount=0;</span><br><span class="line">%&#125;</span><br><span class="line">chars [A-Za-z\_\&#x27;\.\&quot;]</span><br><span class="line">numbers ([0-9])+</span><br><span class="line">delim [&quot; &quot;\n\t]</span><br><span class="line">whitespace &#123;delim&#125;+ </span><br><span class="line">words &#123;chars&#125;+ </span><br><span class="line">%% </span><br><span class="line">while  &#123;printf(&quot;%s\n&quot;,yytext);&#125;</span><br><span class="line">&#123;words&#125; &#123; wordCount++;  /* increase the word count by one*/ &#125; </span><br><span class="line">&#123;whitespace&#125; &#123; /* do nothing*/ &#125; </span><br><span class="line">([0-9])+ &#123; numcount++; /* one may want to add some processing           here*/ &#125; </span><br><span class="line">%%  </span><br><span class="line">void main() &#123; </span><br><span class="line">printf(&quot;ok1\n&quot;);  </span><br><span class="line">yylex(); /* start the  analysis*/  </span><br><span class="line">printf(&quot;ok2\n&quot;); </span><br><span class="line">printf(&quot;No of words: %d\n     number: %d\n&quot;, wordCount, numcount);  </span><br><span class="line">return 0;  </span><br><span class="line">&#125;</span><br><span class="line">int yywrap() </span><br><span class="line">&#123; </span><br><span class="line">return 1; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>第一步命令  <code>flex a.lex</code>得到<code>lex.yy.c</code></p>
+</li>
+<li><p>第二步命令  <code>gcc -o a lex.yy.c</code>得到<code>a.exe</code> （<strong>词法分析器</strong>）</p>
+</li>
+<li><p>待分析文件<code>b.c</code></p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">asd asdf <span class="number">23</span> q </span><br><span class="line">a1 </span><br><span class="line">b2</span><br><span class="line">!#@</span><br><span class="line"><span class="keyword">while</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>使用命令 <code>a.exe &lt;b.c&gt; a.txt</code>  ， 分析结果保存在<code>a.txt</code></li>
+</ol>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ok1</span><br><span class="line">!#@while</span><br><span class="line">ok2</span><br><span class="line">No of words: 5</span><br><span class="line">    number: 3</span><br></pre></td></tr></table></figure>
+
+<p>注意在<code>cmd</code>下运行，<code>linux</code>更优，不要在<code>Powershell</code>，会有<code>&lt;</code>字符冲突</p>
+<h3 id="bison"><a href="#bison" class="headerlink" title="bison"></a>bison</h3><ol>
+<li>首先使用flex工具输入构词规则序列 ， 文件<code>token.l</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &quot;expr.tab.h&quot;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">&quot;q&quot;   return STOP;</span><br><span class="line">&quot;(&quot;   return LP;</span><br><span class="line">&quot;)&quot;   return RP;</span><br><span class="line">&quot;\+&quot;  return PLUS;</span><br><span class="line">&quot;\-&quot;  return MINUS; </span><br><span class="line">&quot;\*&quot;  return MUL; </span><br><span class="line">&quot;\/&quot;  return DIV;</span><br><span class="line"></span><br><span class="line">[0-9]+ &#123;yylval=atoi(yytext); return DIGIT;&#125; </span><br><span class="line">%%</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用命令 <code>flex token.l</code>，得到<code>lex.yy.c</code></li>
+<li>输入上下文无关文法，文件<code>expr.y</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%token DIGIT STOP LP RP PLUS MINUS MUL DIV</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">start: expr STOP &#123;printf(&quot;expr=%d\n&quot;, $1);  exit(1);&#125;</span><br><span class="line">;</span><br><span class="line">expr: expr PLUS expr  &#123;$$=$1+$3;&#125;</span><br><span class="line">    |expr MINUS expr  &#123;$$=$1-$3;&#125;</span><br><span class="line">    |expr MUL expr &#123;$$=$1*$3;&#125;</span><br><span class="line">    |expr DIV expr &#123;$$=$1/$3;&#125;</span><br><span class="line">    |LP expr RP  &#123;$$=$2;&#125;</span><br><span class="line">    |DIGIT &#123;$$=$1;&#125;</span><br><span class="line">;</span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">    printf(&quot;Type something followed by Return. Type &#x27;q&#x27; to end.\n&quot;);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return(yyparse());      /*Start the parser*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yyerror(s)</span><br><span class="line">char *s; &#123;</span><br><span class="line">    printf(&quot;yacc error: %s\n&quot;,s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yywrap()&#123;</span><br><span class="line">    return(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>第二个命令 <code>bison -d expr.y</code>, 得到 <code>expr.tab.c</code>及<code>expr.tab.h</code></p>
+</li>
+<li><p><code>gcc lex.yy.c expr.tab.c -o expr</code> 得到<strong>语法分析程序</strong><code>expr.exe</code></p>
+</li>
+<li><p>使用语法分析程序分析输入文件<code>b.c</code>   <code>expr &lt;b.c&gt; a.txt</code>， 得到<code>a.txt</code></p>
+</li>
+</ol>
+<ul>
+<li><p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">55+(3*20)q</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Type something followed by Return. Type &#x27;q&#x27; to end.</span><br><span class="line">expr=115</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" data-id="cmaerrn9s000016joggmnc4wi" data-title="Flex与Bison用法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-阿里云使用经验" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" class="article-date">
+  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">2025-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">阿里云实验经验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>新用户300元试用，要实名认证，支付宝账号</p>
+<h3 id="实例选择"><a href="#实例选择" class="headerlink" title="实例选择"></a>实例选择</h3><p>2GB示例<strong>2400小时</strong>，4GB实例<strong>1200小时</strong></p>
+<p>但是2G不太够用，容易内存爆满导致vscode直接断连了，且必须重启服务器才可以恢复连接，十分麻烦（有时服务器抽风要7分钟以上才能关闭）</p>
+<h3 id="vscode常见配置"><a href="#vscode常见配置" class="headerlink" title="vscode常见配置"></a>vscode常见配置</h3><ul>
+<li>首先<strong>免密登录</strong>，本地<code>ssh-key</code>，上传公钥pub到服务器~&#x2F;.ssh&#x2F;authorized_keys，本地vscode使用IdentityFile配置即可</li>
+<li><strong>code runner 扩展</strong>， 配置命令<code>python</code>的execution map</li>
+<li>交互式窗口运行python文件，<strong>以便显示图像</strong>（需要下载jupyter等扩展，根据提示下就行</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" data-id="cmaesgrrp0000hojo36go7jgs" data-title="阿里云实验经验" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
 
 
 </section>
@@ -273,7 +321,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li></ul>
     </div>
   </div>
 
@@ -283,7 +331,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a>
+      <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">云服务器</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a>
     </div>
   </div>
 
@@ -305,11 +353,15 @@
       <ul>
         
           <li>
+            <a href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo 博客搭建</a>
+          </li>
+        
+          <li>
             <a href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/">Flex与Bison用法</a>
           </li>
         
           <li>
-            <a href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo 博客搭建</a>
+            <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">阿里云实验经验</a>
           </li>
         
       </ul>

@@ -4,17 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archives | chenzhigang00</title>
+  <title>阿里云实验经验 | chenzhigang00</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="My blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chenzhigang00">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="新用户300元试用，要实名认证，支付宝账号 实例选择2GB示例2400小时，4GB实例1200小时 但是2G不太够用，容易内存爆满导致vscode直接断连了，且必须重启服务器才可以恢复连接，十分麻烦（有时服务器抽风要7分钟以上才能关闭） vscode常见配置 首先免密登录，本地ssh-key，上传公钥pub到服务器~&#x2F;.ssh&#x2F;authorized_keys，本地vscode使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云实验经验">
+<meta property="og:url" content="http://example.com/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/index.html">
 <meta property="og:site_name" content="chenzhigang00">
-<meta property="og:description" content="My blog">
+<meta property="og:description" content="新用户300元试用，要实名认证，支付宝账号 实例选择2GB示例2400小时，4GB实例1200小时 但是2G不太够用，容易内存爆满导致vscode直接断连了，且必须重启服务器才可以恢复连接，十分麻烦（有时服务器抽风要7分钟以上才能关闭） vscode常见配置 首先免密登录，本地ssh-key，上传公钥pub到服务器~&#x2F;.ssh&#x2F;authorized_keys，本地vscode使">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-08T03:09:12.157Z">
 <meta property="article:author" content="Zhigang Chen">
-<meta property="article:tag" content="Study">
+<meta property="article:tag" content="云服务器">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="chenzhigang00" type="application/atom+xml">
@@ -72,77 +74,66 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-05-08T02:46:00.000Z" itemprop="datePublished">May 8</time>
+        <section id="main"><article id="post-阿里云使用经验" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" class="article-date">
+  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">2025-05-08</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo 博客搭建</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      阿里云实验经验
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">May 8</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/">Flex与Bison用法</a>
-    </h1>
-  
+        <p>新用户300元试用，要实名认证，支付宝账号</p>
+<h3 id="实例选择"><a href="#实例选择" class="headerlink" title="实例选择"></a>实例选择</h3><p>2GB示例<strong>2400小时</strong>，4GB实例<strong>1200小时</strong></p>
+<p>但是2G不太够用，容易内存爆满导致vscode直接断连了，且必须重启服务器才可以恢复连接，十分麻烦（有时服务器抽风要7分钟以上才能关闭）</p>
+<h3 id="vscode常见配置"><a href="#vscode常见配置" class="headerlink" title="vscode常见配置"></a>vscode常见配置</h3><ul>
+<li>首先<strong>免密登录</strong>，本地<code>ssh-key</code>，上传公钥pub到服务器~&#x2F;.ssh&#x2F;authorized_keys，本地vscode使用IdentityFile配置即可</li>
+<li><strong>code runner 扩展</strong>， 配置命令<code>python</code>的execution map</li>
+<li>交互式窗口运行python文件，<strong>以便显示图像</strong>（需要下载jupyter等扩展，根据提示下就行</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">May 8</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">阿里云实验经验</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" data-id="cmaesgrrp0000hojo36go7jgs" data-title="阿里云实验经验" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Flex与Bison用法
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

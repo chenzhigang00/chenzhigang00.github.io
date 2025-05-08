@@ -6,15 +6,15 @@
   
   <title>强化学习--贝尔曼方程 | Zhigang Chen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="贝尔曼方程$$v_{\pi}(s)&#x3D;\sum_{a,s’}\pi(a|s)p(s’|s,a){r(s,a,s’)+\gamma v_\pi(s’)}$$ $$q_\pi(s,a)&#x3D;\sum_{s’}p(s’|s,a){r(s,a,s’)+\gamma \sum_{a’}\pi(a’|s’)q_\pi(s’,a’)  }$$ 贝尔曼最优方程$$v_*(s)&#x3D;\matho">
+  <meta name="description" content="贝尔曼方程 vπ(s) &#x3D; ∑a, s′π(a|s)p(s′|s, a){r(s, a, s′) + γvπ(s′)} qπ(s, a) &#x3D; ∑s′p(s′|s, a){r(s, a, s′) + γ∑a′π(a′|s′)qπ(s′, a′)} 贝尔曼最优方程 $$ v_*(s)&#x3D;\mathop{max}\limits_{a} \sum_{s&#39;}p(s&#39;|s,a)\{r(s,a,s&#39;)+\gamm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强化学习--贝尔曼方程">
 <meta property="og:url" content="http://example.com/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Zhigang Chen">
-<meta property="og:description" content="贝尔曼方程$$v_{\pi}(s)&#x3D;\sum_{a,s’}\pi(a|s)p(s’|s,a){r(s,a,s’)+\gamma v_\pi(s’)}$$ $$q_\pi(s,a)&#x3D;\sum_{s’}p(s’|s,a){r(s,a,s’)+\gamma \sum_{a’}\pi(a’|s’)q_\pi(s’,a’)  }$$ 贝尔曼最优方程$$v_*(s)&#x3D;\matho">
+<meta property="og:description" content="贝尔曼方程 vπ(s) &#x3D; ∑a, s′π(a|s)p(s′|s, a){r(s, a, s′) + γvπ(s′)} qπ(s, a) &#x3D; ∑s′p(s′|s, a){r(s, a, s′) + γ∑a′π(a′|s′)qπ(s′, a′)} 贝尔曼最优方程 $$ v_*(s)&#x3D;\mathop{max}\limits_{a} \sum_{s&#39;}p(s&#39;|s,a)\{r(s,a,s&#39;)+\gamm">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-05-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-08T03:39:34.037Z">
+<meta property="article:modified_time" content="2025-05-08T03:47:08.722Z">
 <meta property="article:author" content="Zhigang Chen">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -100,17 +100,23 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="贝尔曼方程"><a href="#贝尔曼方程" class="headerlink" title="贝尔曼方程"></a>贝尔曼方程</h2><p>$$<br>v_{\pi}(s)&#x3D;\sum_{a,s’}\pi(a|s)p(s’|s,a){r(s,a,s’)+\gamma v_\pi(s’)}<br>$$</p>
-<p>$$<br>q_\pi(s,a)&#x3D;\sum_{s’}p(s’|s,a){r(s,a,s’)+\gamma \sum_{a’}\pi(a’|s’)q_\pi(s’,a’)  }<br>$$</p>
-<h2 id="贝尔曼最优方程"><a href="#贝尔曼最优方程" class="headerlink" title="贝尔曼最优方程"></a>贝尔曼最优方程</h2><p>$$<br>v_*(s)&#x3D;\mathop{max}\limits_{a} \sum_{s’}p(s’|s,a){r(s,a,s’)+\gamma v_*(s’)}<br>$$</p>
-<p>$$<br>q_*(s,a)&#x3D;\sum_{s’}p(s’|s,a){r(s,a,s’)+\gamma \mathop{max}\limits_{a’}q_*(s’,a’)  }<br>$$</p>
-<h2 id="最优策略"><a href="#最优策略" class="headerlink" title="最优策略"></a>最优策略</h2><p>$$<br>\begin{align}</p>
-<p>\mu_*(s) &amp; &#x3D;\mathop{argmax}<em>a\ q</em><em>(s,a) \<br>         &amp; &#x3D;\mathop{argmax}<em>a \sum</em>{s’}p(s’|s,a){r(s,a,s’) + \gamma v_</em>(s’)  }<br>\end{align}<br>$$</p>
+        <h2 id="贝尔曼方程">贝尔曼方程</h2>
+<p><br /><span class="math display"><em>v</em><sub><em>π</em></sub>(<em>s</em>) = ∑<sub><em>a</em>, <em>s</em>′</sub><em>π</em>(<em>a</em>|<em>s</em>)<em>p</em>(<em>s</em>′|<em>s</em>, <em>a</em>){<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>′) + <em>γ</em><em>v</em><sub><em>π</em></sub>(<em>s</em>′)}</span><br /></p>
+<p><br /><span class="math display"><em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) = ∑<sub><em>s</em>′</sub><em>p</em>(<em>s</em>′|<em>s</em>, <em>a</em>){<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>′) + <em>γ</em>∑<sub><em>a</em>′</sub><em>π</em>(<em>a</em>′|<em>s</em>′)<em>q</em><sub><em>π</em></sub>(<em>s</em>′, <em>a</em>′)}</span><br /></p>
+<h2 id="贝尔曼最优方程">贝尔曼最优方程</h2>
+<p><br /><span class="math display">$$
+v_*(s)=\mathop{max}\limits_{a} \sum_{s'}p(s'|s,a)\{r(s,a,s')+\gamma v_*(s')\}
+$$</span><br /></p>
+<p><br /><span class="math display">$$
+q_*(s,a)=\sum_{s'}p(s'|s,a)\{r(s,a,s')+\gamma \mathop{max}\limits_{a'}q_*(s',a')  \}
+$$</span><br /></p>
+<h2 id="最优策略">最优策略</h2>
+<p>$$  $$</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/" data-id="cmaesielm0000ksjo0mst8lzm" data-title="强化学习--贝尔曼方程" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/" data-id="cmaeu3kfl0004t1joc8btd764" data-title="强化学习--贝尔曼方程" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -122,19 +128,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          阿里云实验经验
+          Linux 权限、文件夹删除、更新软件源列表
         
       </div>
     </a>
   
   
-    <a href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Linux 权限、文件夹删除、更新软件源列表</div>
+      <div class="article-nav-title">阿里云实验经验</div>
     </a>
   
 </nav>
@@ -194,7 +200,7 @@
           </li>
         
           <li>
-            <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">阿里云实验经验</a>
+            <a href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/">Linux 权限、文件夹删除、更新软件源列表</a>
           </li>
         
           <li>
@@ -202,7 +208,7 @@
           </li>
         
           <li>
-            <a href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/">Linux 权限、文件夹删除、更新软件源列表</a>
+            <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">阿里云实验经验</a>
           </li>
         
       </ul>

@@ -1,527 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Zhigang Chen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="我的博客">
+<!DOCTYPE html><html lang="cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Zhigang Chen - 记录生活</title><meta name="author" content="Zhigang Chen"><meta name="copyright" content="Zhigang Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="我的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Zhigang Chen">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Zhigang Chen">
 <meta property="og:description" content="我的博客">
 <meta property="og:locale">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
 <meta property="article:author" content="Zhigang Chen">
 <meta property="article:tag" content="Study">
 <meta name="twitter:card" content="summary">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Zhigang Chen</a>
-      </h1>
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">记录生活</a>
-        </h2>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Zhigang Chen',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Zhigang Chen</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Zhigang Chen</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="Hexo 博客搭建">Hexo 博客搭建</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-05-08T02:46:00.000Z" title="Created 2025-05-08 10:46:00">2025-05-08</time></span></div><div class="content">部署 准备：linux环境  第一步，apt install 下载node, npm, git (若后续因为node、npm版本问题报错，则利用copilot提示下载新版本即可) 第二步，连接Github 12git config --global user.name &quot;GitHub 用户名&quot;git config --global user.email &quot;GitHub 邮箱&quot; Github账户上Setting-SSH and GPG keys上放pub公钥文件，本地root/.ssh下要有私钥文件  Git bash下输入ssh -T git@github.com, 输入yes  第三步创建Github Page仓库，到github上创建用户名.github.io仓库 本地安装Hexo博客程序 npm install -g hexo-cli 这一步可能出错，是因为npm，node版本问题，用报错信息问问ai应该下载哪个版本的 Hexo 初始化和本地预览 12hexo init      # 初始化npm install    #...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" title="Flex与Bison用法">Flex与Bison用法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></span></div><div class="content">flex  编写a.lex文件  1234567891011121314151617181920212223242526%&#123;int wordCount=0;int numcount=0;%&#125;chars [A-Za-z\_\&#x27;\.\&quot;]numbers ([0-9])+delim [&quot; &quot;\n\t]whitespace &#123;delim&#125;+ words &#123;chars&#125;+ %% while  &#123;printf(&quot;%s\n&quot;,yytext);&#125;&#123;words&#125; &#123; wordCount++;  /* increase the word count by one*/ &#125; &#123;whitespace&#125; &#123; /* do nothing*/ &#125; ([0-9])+ &#123; numcount++; /* one may want to add some processing        ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/" title="Linux 权限、文件夹删除、更新软件源列表">Linux 权限、文件夹删除、更新软件源列表</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></span></div><div class="content">Linux 权限、文件夹删除  给shell script文件加权限  1234ls -lchmod +x run.shls -l./run.sh  非空文件夹删除  1rm -rf dir_name 更新软件源列表 sudo apt-get update </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/" title="强化学习--贝尔曼方程">强化学习--贝尔曼方程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></span></div><div class="content">$$ \begin{gather} \begin{split} Adv^{Fed} &amp; = Pr^{Fed}\left ( A=1\mid x\in D_{T} \right ) - Pr^{Fed}\left ( A=1\mid x\in D_{N} \right ) \\ &amp; = \underset{x\in D_{T}}{E^{Fed}}\left ( P\left ( A=1\mid x \right ) \right )-\underset{x\in D_{N}}{E^{Fed}}\left ( P\left ( A=1\mid x \right ) \right ) \\ &amp; = \underset{x\in D_{T}}{E^{Fed}}\left ( 1-\frac{L\left ( \left ( x,y \right ),F \right )}{A} \right )-\underset{x\in D_{N}}{E^{Fed}}\left ( 1-\frac{L\left ( \left ( x,y \right ),F \right...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" title="阿里云实验经验">阿里云实验经验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></span></div><div class="content">新用户300元试用，要实名认证，支付宝账号 实例选择 2GB示例2400小时，4GB实例1200小时 但是2G不太够用，容易内存爆满导致vscode直接断连了，且必须重启服务器才可以恢复连接，十分麻烦（有时服务器抽风要7分钟以上才能关闭） vscode常见配置  首先免密登录，本地ssh-key，上传公钥pub到服务器~/.ssh/authorized_keys，本地vscode使用IdentityFile配置即可 code runner 扩展， 配置命令python的execution map 交互式窗口运行python文件，以便显示图像（需要下载jupyter等扩展，根据提示下就行  </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zhigang Chen</div><div class="author-info-description">我的博客</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="Hexo 博客搭建">Hexo 博客搭建</a><time datetime="2025-05-08T02:46:00.000Z" title="Created 2025-05-08 10:46:00">2025-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" title="Flex与Bison用法">Flex与Bison用法</a><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/" title="Linux 权限、文件夹删除、更新软件源列表">Linux 权限、文件夹删除、更新软件源列表</a><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/" title="强化学习--贝尔曼方程">强化学习--贝尔曼方程</a><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" title="阿里云实验经验">阿里云实验经验</a><time datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" style="font-size: 1.1em; color: #999">个人网站</a> <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.1em; color: #999">云服务器</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 1.1em; color: #999">编译原理</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">强化学习</a> <a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-Hexo博客搭建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="article-date">
-  <time class="dt-published" datetime="2025-05-08T02:46:00.000Z" itemprop="datePublished">2025-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo 博客搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <h3 id="部署">部署</h3>
-<p>准备：linux环境</p>
-<ol type="1">
-<li><p>第一步，<code>apt install</code> 下载<code>node</code>, <code>npm</code>, <code>git</code> (若后续因为node、npm版本问题报错，则利用copilot提示下载新版本即可)</p></li>
-<li><p>第二步，连接Github</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;GitHub 用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;GitHub 邮箱&quot;</span></span><br></pre></td></tr></table></figure>
-<p>Github账户上<code>Setting-SSH and GPG keys</code>上放<code>pub</code>公钥文件，本地<code>root/.ssh</code>下要有私钥文件</p>
-<ul>
-<li><code>Git bash</code>下输入<code>ssh -T git@github.com</code>, 输入yes</li>
-</ul></li>
-<li><p>第三步创建Github Page仓库，到github上创建<code>用户名.github.io</code>仓库</p></li>
-<li><p>本地安装Hexo博客程序</p>
-<p><code>npm install -g hexo-cli</code> 这一步可能出错，是因为npm，node版本问题，用报错信息问问ai应该下载哪个版本的</p></li>
-<li><p>Hexo 初始化和本地预览</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init      <span class="comment"># 初始化</span></span><br><span class="line">npm install    <span class="comment"># 安装组件</span></span><br></pre></td></tr></table></figure>
-<p>访问<code>http://localhost:4000</code></p></li>
-<li><p>部署Hexo到Github Pages<code>ynpm install hexo-deployer-git --save</code></p>
-<p><strong>要求在空文件夹下按照，以后有关数据都在这个文件夹下操作</strong></p>
-<p>修改<code>.cofig,yml</code>文件末尾的<code>Deployment</code>部分</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">git@github.com:用户名/用户名.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行<code>hexo d</code></li>
-</ul>
-<p>成功啦， 网址输入github.io网址康康（有一定延时，更换浏览器绕开缓存影响）</p></li>
-</ol>
-<h3 id="使用">使用</h3>
-<h4 id="创建文章">创建文章</h4>
-<ul>
-<li><p>第一种使用方式：命令创建新的markdown，后编辑</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;My New Post&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在source文件夹下出现<code>My New Post.md</code>文件</li>
-</ul></li>
-<li><p>第二种使用方式：修改已有的markdown文件</p>
-<ul>
-<li><p>在开头添加如下信息</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World # 标题</span><br><span class="line">date: 2019/3/26 hh:mm:ss # 时间</span><br><span class="line">categories: # 分类</span><br><span class="line"><span class="bullet">-</span> Diary</span><br><span class="line">tags: # 标签</span><br><span class="line"><span class="bullet">-</span> PS3</span><br><span class="line"><span class="section">- Games</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line">摘要</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">正文</span><br></pre></td></tr></table></figure></li>
-</ul></li>
-</ul>
-<h4 id="发布文章">发布文章</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<h4 id="网站设置">网站设置</h4>
-<p>包括网站名称、描述、作者、链接样式等，全部在网站目录下的 <code>_config.yml</code></p>
-<h4 id="更换主题">更换主题</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>后在<code>config.yml</code>文件中设置</p>
-<h3 id="常用命令">常用命令</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br><span class="line">hexo g                <span class="comment"># 生成页面</span></span><br><span class="line">hexo d                <span class="comment"># 部署</span></span><br><span class="line">hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">hexo s                <span class="comment"># 本地预览</span></span><br><span class="line">hexo clean            <span class="comment"># 清除缓存和已生成的静态文件</span></span><br><span class="line">hexo <span class="built_in">help</span>             <span class="comment"># 帮助</span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向） - 知乎</a></p>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              May 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cmaewbud60001idjogm302gud" data-title="Hexo 博客搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" rel="tag">个人网站</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Flex与Bison用法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">2025-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/">Flex与Bison用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="flex">flex</h3>
-<ol type="1">
-<li>编写a.lex文件</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">int wordCount=0;</span><br><span class="line">int numcount=0;</span><br><span class="line">%&#125;</span><br><span class="line">chars [A-Za-z\_\&#x27;\.\&quot;]</span><br><span class="line">numbers ([0-9])+</span><br><span class="line">delim [&quot; &quot;\n\t]</span><br><span class="line">whitespace &#123;delim&#125;+ </span><br><span class="line">words &#123;chars&#125;+ </span><br><span class="line">%% </span><br><span class="line">while  &#123;printf(&quot;%s\n&quot;,yytext);&#125;</span><br><span class="line">&#123;words&#125; &#123; wordCount++;  /* increase the word count by one*/ &#125; </span><br><span class="line">&#123;whitespace&#125; &#123; /* do nothing*/ &#125; </span><br><span class="line">([0-9])+ &#123; numcount++; /* one may want to add some processing           here*/ &#125; </span><br><span class="line">%%  </span><br><span class="line">void main() &#123; </span><br><span class="line">printf(&quot;ok1\n&quot;);  </span><br><span class="line">yylex(); /* start the  analysis*/  </span><br><span class="line">printf(&quot;ok2\n&quot;); </span><br><span class="line">printf(&quot;No of words: %d\n     number: %d\n&quot;, wordCount, numcount);  </span><br><span class="line">return 0;  </span><br><span class="line">&#125;</span><br><span class="line">int yywrap() </span><br><span class="line">&#123; </span><br><span class="line">return 1; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li><p>第一步命令 <code>flex a.lex</code>得到<code>lex.yy.c</code></p></li>
-<li>第二步命令 <code>gcc -o a lex.yy.c</code>得到<code>a.exe</code> （<strong>词法分析器</strong>）</li>
-<li><p>待分析文件<code>b.c</code></p></li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">asd asdf <span class="number">23</span> q </span><br><span class="line">a1 </span><br><span class="line">b2</span><br><span class="line">!#@</span><br><span class="line"><span class="keyword">while</span></span><br></pre></td></tr></table></figure>
-<ol start="5" type="1">
-<li>使用命令 <code>a.exe &lt;b.c&gt; a.txt</code> ， 分析结果保存在<code>a.txt</code></li>
-</ol>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ok1</span><br><span class="line">!#@while</span><br><span class="line">ok2</span><br><span class="line">No of words: 5</span><br><span class="line">    number: 3</span><br></pre></td></tr></table></figure>
-<p>注意在<code>cmd</code>下运行，<code>linux</code>更优，不要在<code>Powershell</code>，会有<code>&lt;</code>字符冲突</p>
-<h3 id="bison">bison</h3>
-<ol type="1">
-<li>首先使用flex工具输入构词规则序列 ， 文件<code>token.l</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &quot;expr.tab.h&quot;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">&quot;q&quot;   return STOP;</span><br><span class="line">&quot;(&quot;   return LP;</span><br><span class="line">&quot;)&quot;   return RP;</span><br><span class="line">&quot;\+&quot;  return PLUS;</span><br><span class="line">&quot;\-&quot;  return MINUS; </span><br><span class="line">&quot;\*&quot;  return MUL; </span><br><span class="line">&quot;\/&quot;  return DIV;</span><br><span class="line"></span><br><span class="line">[0-9]+ &#123;yylval=atoi(yytext); return DIGIT;&#125; </span><br><span class="line">%%</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>使用命令 <code>flex token.l</code>，得到<code>lex.yy.c</code></li>
-<li>输入上下文无关文法，文件<code>expr.y</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%token DIGIT STOP LP RP PLUS MINUS MUL DIV</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">start: expr STOP &#123;printf(&quot;expr=%d\n&quot;, $1);  exit(1);&#125;</span><br><span class="line">;</span><br><span class="line">expr: expr PLUS expr  &#123;$$=$1+$3;&#125;</span><br><span class="line">    |expr MINUS expr  &#123;$$=$1-$3;&#125;</span><br><span class="line">    |expr MUL expr &#123;$$=$1*$3;&#125;</span><br><span class="line">    |expr DIV expr &#123;$$=$1/$3;&#125;</span><br><span class="line">    |LP expr RP  &#123;$$=$2;&#125;</span><br><span class="line">    |DIGIT &#123;$$=$1;&#125;</span><br><span class="line">;</span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">    printf(&quot;Type something followed by Return. Type &#x27;q&#x27; to end.\n&quot;);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return(yyparse());      /*Start the parser*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yyerror(s)</span><br><span class="line">char *s; &#123;</span><br><span class="line">    printf(&quot;yacc error: %s\n&quot;,s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yywrap()&#123;</span><br><span class="line">    return(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4" type="1">
-<li><p>第二个命令 <code>bison -d expr.y</code>, 得到 <code>expr.tab.c</code>及<code>expr.tab.h</code></p></li>
-<li><p><code>gcc lex.yy.c expr.tab.c -o expr</code> 得到<strong>语法分析程序</strong><code>expr.exe</code></p></li>
-<li><p>使用语法分析程序分析输入文件<code>b.c</code> <code>expr &lt;b.c&gt; a.txt</code>， 得到<code>a.txt</code></p></li>
-</ol>
-<ul>
-<li><p>输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">55+(3*20)q</span><br></pre></td></tr></table></figure></li>
-<li><p>输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Type something followed by Return. Type &#x27;q&#x27; to end.</span><br><span class="line">expr=115</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/" data-id="cmaewbud20000idjohuv27pew" data-title="Flex与Bison用法" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Linux 权限、文件夹删除" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/" class="article-date">
-  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">2025-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/">Linux 权限、文件夹删除、更新软件源列表</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="linux-权限文件夹删除">Linux 权限、文件夹删除</h2>
-<ul>
-<li>给shell script文件加权限</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -l</span><br><span class="line">chmod +x run.sh</span><br><span class="line">ls -l</span><br><span class="line">./run.sh</span><br></pre></td></tr></table></figure>
-<ul>
-<li>非空文件夹删除</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf dir_name</span><br></pre></td></tr></table></figure>
-<h2 id="更新软件源列表">更新软件源列表</h2>
-<p><code>sudo apt-get update</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/" data-id="cmaewbuda0003idjofp9q47mt" data-title="Linux 权限、文件夹删除、更新软件源列表" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-贝尔曼方程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">2025-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/">强化学习--贝尔曼方程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><br /><span class="math display">$$
-\begin{gather}
-\begin{split}
-Adv^{Fed}
-&amp; = Pr^{Fed}\left ( A=1\mid x\in D_{T} \right ) - Pr^{Fed}\left (
-A=1\mid x\in D_{N} \right ) \\
-&amp; = \underset{x\in D_{T}}{E^{Fed}}\left ( P\left ( A=1\mid x \right
-) \right )-\underset{x\in D_{N}}{E^{Fed}}\left ( P\left ( A=1\mid x
-\right ) \right ) \\
-&amp; = \underset{x\in D_{T}}{E^{Fed}}\left ( 1-\frac{L\left ( \left (
-x,y \right ),F \right )}{A} \right )-\underset{x\in D_{N}}{E^{Fed}}\left
-( 1-\frac{L\left ( \left ( x,y \right ),F \right )}{A} \right )\\
-&amp; = \frac{1}{A}\cdot \left [ \underset{x\in D_{N}}{E^{Fed}}\left (
-L\left ( \left ( x,y \right ),F \right )\right )-\underset{x\in
-D_{T}}{E^{Fed}}\left ( L\left ( \left ( x,y \right ),F \right ) \right )
-\right ] \\
-\end{split}
-\end{gather}
-$$</span><br /></p>
-<h2 id="贝尔曼方程">贝尔曼方程</h2>
-<p><br /><span class="math display"><em>v</em><sub><em>π</em></sub>(<em>s</em>) = ∑<sub><em>a</em>, <em>s</em>′</sub><em>π</em>(<em>a</em>|<em>s</em>)<em>p</em>(<em>s</em>′|<em>s</em>, <em>a</em>){<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>′) + <em>γ</em><em>v</em><sub><em>π</em></sub>(<em>s</em>′)}</span><br /></p>
-<p><br /><span class="math display"><em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) = ∑<sub><em>s</em>′</sub><em>p</em>(<em>s</em>′|<em>s</em>, <em>a</em>){<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>′) + <em>γ</em>∑<sub><em>a</em>′</sub><em>π</em>(<em>a</em>′|<em>s</em>′)<em>q</em><sub><em>π</em></sub>(<em>s</em>′, <em>a</em>′)}</span><br /></p>
-<h2 id="贝尔曼最优方程">贝尔曼最优方程</h2>
-<p><br /><span class="math display">$$
-v_*(s)=\mathop{max}\limits_{a} \sum_{s'}p(s'|s,a)\{r(s,a,s')+\gamma v_*(s')\}
-$$</span><br /></p>
-<p><br /><span class="math display">$$
-q_*(s,a)=\sum_{s'}p(s'|s,a)\{r(s,a,s')+\gamma \mathop{max}\limits_{a'}q_*(s',a')  \}
-$$</span><br /></p>
-<h2 id="最优策略">最优策略</h2>
-<p>$$  $$</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/" data-id="cmaewbudb0004idjo1nzxfrls" data-title="强化学习--贝尔曼方程" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-阿里云使用经验" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" class="article-date">
-  <time class="dt-published" datetime="2025-05-07T16:00:00.000Z" itemprop="datePublished">2025-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">阿里云实验经验</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>新用户300元试用，要实名认证，支付宝账号</p>
-<h3 id="实例选择">实例选择</h3>
-<p>2GB示例<strong>2400小时</strong>，4GB实例<strong>1200小时</strong></p>
-<p>但是2G不太够用，容易内存爆满导致vscode直接断连了，且必须重启服务器才可以恢复连接，十分麻烦（有时服务器抽风要7分钟以上才能关闭）</p>
-<h3 id="vscode常见配置">vscode常见配置</h3>
-<ul>
-<li>首先<strong>免密登录</strong>，本地<code>ssh-key</code>，上传公钥pub到服务器~/.ssh/authorized_keys，本地vscode使用IdentityFile配置即可</li>
-<li><strong>code runner 扩展</strong>， 配置命令<code>python</code>的execution map</li>
-<li>交互式窗口运行python文件，<strong>以便显示图像</strong>（需要下载jupyter等扩展，根据提示下就行</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/" data-id="cmaewbudd0005idjo1e1z3qfx" data-title="阿里云实验经验" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" rel="tag">个人网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" style="font-size: 10px;">个人网站</a> <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">云服务器</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">强化学习</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 10px;">编译原理</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/05/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo 博客搭建</a>
-          </li>
-        
-          <li>
-            <a href="/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/">Flex与Bison用法</a>
-          </li>
-        
-          <li>
-            <a href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/">Linux 权限、文件夹删除、更新软件源列表</a>
-          </li>
-        
-          <li>
-            <a href="/2025/05/08/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/">强化学习--贝尔曼方程</a>
-          </li>
-        
-          <li>
-            <a href="/2025/05/08/%E9%98%BF%E9%87%8C%E4%BA%91%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">阿里云实验经验</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 Zhigang Chen<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">5</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-05-08T05:05:35.278Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Zhigang Chen</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

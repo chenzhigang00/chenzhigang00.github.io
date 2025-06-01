@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Flex与Bison用法 | Zhigang Chen</title><meta name="author" content="Zhigang Chen"><meta name="copyright" content="Zhigang Chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="flex 编写a.lex文件  1234567891011121314151617181920212223242526%&#123;int wordCount&#x3D;0;int numcount&#x3D;0;%&#125;chars [A-Za-z\_\&#x27;\.\&quot;]numbers ([0-9])+delim [&quot; &quot;\n\t]whitespace &#123;delim&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flex与Bison用法">
+<meta property="og:url" content="https://chenzhigang00.github.io/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/index.html">
+<meta property="og:site_name" content="Zhigang Chen">
+<meta property="og:description" content="flex 编写a.lex文件  1234567891011121314151617181920212223242526%&#123;int wordCount&#x3D;0;int numcount&#x3D;0;%&#125;chars [A-Za-z\_\&#x27;\.\&quot;]numbers ([0-9])+delim [&quot; &quot;\n\t]whitespace &#123;delim&amp;">
+<meta property="og:locale">
+<meta property="og:image" content="https://chenzhigang00.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-05-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-01T09:27:09.346Z">
+<meta property="article:author" content="Zhigang Chen">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenzhigang00.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Flex与Bison用法",
+  "url": "https://chenzhigang00.github.io/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/",
+  "image": "https://chenzhigang00.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-05-07T16:00:00.000Z",
+  "dateModified": "2025-06-01T09:27:09.346Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Zhigang Chen",
+      "url": "https://chenzhigang00.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://chenzhigang00.github.io/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Flex与Bison用法',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Zhigang Chen</span></a><a class="nav-page-title" href="/"><span class="site-name">Flex与Bison用法</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Flex与Bison用法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-07T16:00:00.000Z" title="Created 2025-05-08 00:00:00">2025-05-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-06-01T09:27:09.346Z" title="Updated 2025-06-01 17:27:09">2025-06-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><ol>
+<li>编写a.lex文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">int wordCount=0;</span><br><span class="line">int numcount=0;</span><br><span class="line">%&#125;</span><br><span class="line">chars [A-Za-z\_\&#x27;\.\&quot;]</span><br><span class="line">numbers ([0-9])+</span><br><span class="line">delim [&quot; &quot;\n\t]</span><br><span class="line">whitespace &#123;delim&#125;+ </span><br><span class="line">words &#123;chars&#125;+ </span><br><span class="line">%% </span><br><span class="line">while  &#123;printf(&quot;%s\n&quot;,yytext);&#125;</span><br><span class="line">&#123;words&#125; &#123; wordCount++;  /* increase the word count by one*/ &#125; </span><br><span class="line">&#123;whitespace&#125; &#123; /* do nothing*/ &#125; </span><br><span class="line">([0-9])+ &#123; numcount++; /* one may want to add some processing           here*/ &#125; </span><br><span class="line">%%  </span><br><span class="line">void main() &#123; </span><br><span class="line">printf(&quot;ok1\n&quot;);  </span><br><span class="line">yylex(); /* start the  analysis*/  </span><br><span class="line">printf(&quot;ok2\n&quot;); </span><br><span class="line">printf(&quot;No of words: %d\n     number: %d\n&quot;, wordCount, numcount);  </span><br><span class="line">return 0;  </span><br><span class="line">&#125;</span><br><span class="line">int yywrap() </span><br><span class="line">&#123; </span><br><span class="line">return 1; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>第一步命令  <code>flex a.lex</code>得到<code>lex.yy.c</code></p>
+</li>
+<li><p>第二步命令  <code>gcc -o a lex.yy.c</code>得到<code>a.exe</code> （<strong>词法分析器</strong>）</p>
+</li>
+<li><p>待分析文件<code>b.c</code></p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">asd asdf <span class="number">23</span> q </span><br><span class="line">a1 </span><br><span class="line">b2</span><br><span class="line">!#@</span><br><span class="line"><span class="keyword">while</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>使用命令 <code>a.exe &lt;b.c&gt; a.txt</code>  ， 分析结果保存在<code>a.txt</code></li>
+</ol>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ok1</span><br><span class="line">!#@while</span><br><span class="line">ok2</span><br><span class="line">No of words: 5</span><br><span class="line">    number: 3</span><br></pre></td></tr></table></figure>
+
+<p>注意在<code>cmd</code>下运行，<code>linux</code>更优，不要在<code>Powershell</code>，会有<code>&lt;</code>字符冲突</p>
+<h3 id="bison"><a href="#bison" class="headerlink" title="bison"></a>bison</h3><ol>
+<li>首先使用flex工具输入构词规则序列 ， 文件<code>token.l</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &quot;expr.tab.h&quot;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">&quot;q&quot;   return STOP;</span><br><span class="line">&quot;(&quot;   return LP;</span><br><span class="line">&quot;)&quot;   return RP;</span><br><span class="line">&quot;\+&quot;  return PLUS;</span><br><span class="line">&quot;\-&quot;  return MINUS; </span><br><span class="line">&quot;\*&quot;  return MUL; </span><br><span class="line">&quot;\/&quot;  return DIV;</span><br><span class="line"></span><br><span class="line">[0-9]+ &#123;yylval=atoi(yytext); return DIGIT;&#125; </span><br><span class="line">%%</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用命令 <code>flex token.l</code>，得到<code>lex.yy.c</code></li>
+<li>输入上下文无关文法，文件<code>expr.y</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%token DIGIT STOP LP RP PLUS MINUS MUL DIV</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">start: expr STOP &#123;printf(&quot;expr=%d\n&quot;, $1);  exit(1);&#125;</span><br><span class="line">;</span><br><span class="line">expr: expr PLUS expr  &#123;$$=$1+$3;&#125;</span><br><span class="line">    |expr MINUS expr  &#123;$$=$1-$3;&#125;</span><br><span class="line">    |expr MUL expr &#123;$$=$1*$3;&#125;</span><br><span class="line">    |expr DIV expr &#123;$$=$1/$3;&#125;</span><br><span class="line">    |LP expr RP  &#123;$$=$2;&#125;</span><br><span class="line">    |DIGIT &#123;$$=$1;&#125;</span><br><span class="line">;</span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">    printf(&quot;Type something followed by Return. Type &#x27;q&#x27; to end.\n&quot;);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return(yyparse());      /*Start the parser*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yyerror(s)</span><br><span class="line">char *s; &#123;</span><br><span class="line">    printf(&quot;yacc error: %s\n&quot;,s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yywrap()&#123;</span><br><span class="line">    return(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>第二个命令 <code>bison -d expr.y</code>, 得到 <code>expr.tab.c</code>及<code>expr.tab.h</code></p>
+</li>
+<li><p><code>gcc lex.yy.c expr.tab.c -o expr</code> 得到<strong>语法分析程序</strong><code>expr.exe</code></p>
+</li>
+<li><p>使用语法分析程序分析输入文件<code>b.c</code>   <code>expr &lt;b.c&gt; a.txt</code>， 得到<code>a.txt</code></p>
+</li>
+</ol>
+<ul>
+<li><p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">55+(3*20)q</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Type something followed by Return. Type &#x27;q&#x27; to end.</span><br><span class="line">expr=115</span><br></pre></td></tr></table></figure></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://chenzhigang00.github.io">Zhigang Chen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://chenzhigang00.github.io/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/">https://chenzhigang00.github.io/2025/05/08/Flex%E4%B8%8EBison%E7%94%A8%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/08/Linux%20%E6%9D%83%E9%99%90%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4/" title="Linux 权限、文件夹删除、更新软件源列表"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Linux 权限、文件夹删除、更新软件源列表</div></div><div class="info-2"><div class="info-item-1">Linux 权限、文件夹删除 给shell script文件加权限  1234ls -lchmod +x run.shls -l./run.sh   非空文件夹删除  1rm -rf dir_name  更新软件源列表sudo apt-get update </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zhigang Chen</div><div class="author-info-description">我的博客</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-number">1.</span> <span class="toc-text">flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bison"><span class="toc-number">2.</span> <span class="toc-text">bison</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/01/hello-world/" title="Hello World">Hello World</a><time datetime="2025-06-01T09:03:55.624Z" title="Created 2025-06-01 17:03:55">2025-06-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/curl%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="curl使用注意事项">curl使用注意事项</a><time datetime="2025-05-23T12:55:30.000Z" title="Created 2025-05-23 20:55:30">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/22/switch%E8%AF%AD%E5%8F%A5%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="switch语句使用注意事项">switch语句使用注意事项</a><time datetime="2025-05-22T03:13:02.000Z" title="Created 2025-05-22 11:13:02">2025-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/22/C-C-%E6%8C%87%E9%92%88%E4%BD%BF%E7%94%A8%E5%89%8D%E5%BF%85%E9%A1%BB%E5%81%9A%E7%9A%84%E4%BA%8B/" title="C/C++ 指针使用前必须做的事">C/C++ 指针使用前必须做的事</a><time datetime="2025-05-22T02:35:13.000Z" title="Created 2025-05-22 10:35:13">2025-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/18/%E5%B7%AE%E5%88%86%E9%9A%90%E7%A7%81/" title="差分隐私">差分隐私</a><time datetime="2025-05-18T13:49:57.000Z" title="Created 2025-05-18 21:49:57">2025-05-18</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By Zhigang Chen</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.0-b2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

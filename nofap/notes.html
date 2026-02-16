@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Notes - NoFap Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    NoFap Notes
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#features">Features</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="notes.html" class="active">Notes</a>
+                    <a href="checkin.html" class="btn-primary">Start Journaling</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Notes Section -->
+    <section class="notes-section">
+        <div class="container">
+            <h2 class="section-title">Learning & Reflections</h2>
+            
+            <div class="note-editor">
+                <div class="editor-header">
+                    <select id="noteTag" class="tag-select">
+                        <option value="Insight">💡 Insight</option>
+                        <option value="Knowledge">📚 Knowledge</option>
+                        <option value="Reflection">🧘‍♂️ Reflection</option>
+                        <option value="Motto">⚡ Motto</option>
+                        <option value="Other">📌 Other</option>
+                    </select>
+                </div>
+                <textarea id="noteInput" class="note-input" placeholder="Write down your insights, reflections, or current feelings here..."></textarea>
+                <button id="saveNoteBtn" class="btn-primary">Save Note</button>
+            </div>
+
+            <div class="notes-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Insight">Insight</button>
+                <button class="filter-btn" data-filter="Knowledge">Knowledge</button>
+                <button class="filter-btn" data-filter="Reflection">Reflection</button>
+                <button class="filter-btn" data-filter="Motto">Motto</button>
+                <button class="filter-btn" data-filter="Other">Other</button>
+            </div>
+
+            <div id="notesList" class="notes-list">
+                <!-- Notes will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NoFap Notes. All rights reserved. Stay true to yourself.</p>
+        </div>
+    </footer>
+
+    <script src="notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戒色综合考试 - 戒色笔记</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="exam.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    戒色笔记
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#features">功能</a>
+                    <a href="checkin.html">每日打卡</a>
+                    <a href="notes.html">学习笔记</a>
+                    <a href="test.html">知识测试</a>
+                    <a href="exam.html" class="active">综合考试</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Exam Section -->
+    <section class="exam-section">
+        <div class="container">
+            <div class="exam-header">
+                <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                    <select id="examSelector" class="exam-selector">
+                        <option value="A">戒色系统认知综合测试 (A卷)</option>
+                        <option value="B">戒色系统认知综合测试 (B卷)</option>
+                    </select>
+                </div>
+                <h1 class="exam-title" id="examTitle">戒色系统认知综合测试 (A卷)</h1>
+                <div class="exam-meta">
+                    <div class="meta-item">
+                        <span class="label">建议用时</span>
+                        <span class="value">90–120 分钟</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">总分</span>
+                        <span class="value" id="totalScore">150 分</span>
+                    </div>
+                    <div class="meta-item timer-item">
+                        <span class="label">已用时</span>
+                        <span class="value" id="timer">00:00:00</span>
+                    </div>
+                </div>
+                <div class="exam-scope" id="examScope">
+                    <strong>考试范围：</strong>杜绝性刺激｜看黄必破机制｜洗脑与定力｜戒色三阶段｜作息久坐运动｜补法与中医养生｜频遗与固肾功｜常见症状与恢复逻辑
+                </div>
+            </div>
+
+            <form id="examForm" class="exam-form">
+                <!-- Sections will be injected here by JS -->
+                <div id="examContent"></div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submitExamBtn" class="btn-primary">提交试卷</button>
+                </div>
+            </form>
+
+            <!-- Result Section (Hidden initially) -->
+            <div id="examResult" class="exam-result" style="display: none;">
+                <div class="result-header">
+                    <h2>考试结果</h2>
+                    <div class="score-display">
+                        <span class="score-label">客观题得分</span>
+                        <span class="score-value" id="objectiveScore">0</span>
+                        <span class="score-total" id="maxObjectiveScore"> / 90</span>
+                    </div>
+                    <p class="result-note">主观题（填空、简答、论述）请对照参考答案自行评分。</p>
+                </div>
+                <button id="toggleAnswersBtn" class="btn-secondary">查看参考答案</button>
+                <div id="referenceAnswers" class="reference-answers" style="display: none;">
+                    <!-- Answers will be injected here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 戒色笔记. All rights reserved. 愿你归来仍是少年。</p>
+        </div>
+    </footer>
+
+    <script src="exam-a.js"></script>
+    <script src="exam-b.js"></script>
+    <script src="exam.js"></script>
+</body>
+</html>

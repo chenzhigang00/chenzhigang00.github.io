@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试历史 - 戒色笔记</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Language Toggle Button -->
+    <button id="langToggle" class="lang-toggle" aria-label="Switch Language">
+        中文 / English
+    </button>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span data-i18n="logo">戒色笔记</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#features" data-i18n="nav.features">功能</a>
+                    <a href="checkin.html" data-i18n="nav.checkin">每日打卡</a>
+                    <a href="notes.html" data-i18n="nav.notes">学习笔记</a>
+                    <a href="test.html" class="active" data-i18n="nav.test">知识测试</a>
+                    <a href="exam.html" data-i18n="nav.exam">综合考试</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- History Section -->
+    <section class="test-section">
+        <div class="container">
+            <div class="test-header">
+                <h1 class="section-title" data-i18n="history.title">测试历史记录</h1>
+                <p class="test-intro" data-i18n="history.intro">回顾你的每一次自测，见证认知的提升。</p>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <a href="test.html" class="btn-secondary" data-i18n="history.back">返回测试</a>
+                </div>
+            </div>
+
+            <div id="historyContainer" class="questions-list">
+                <!-- History records will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p data-i18n="footer.copyright">&copy; 2024 戒色笔记. All rights reserved. 愿你归来仍是少年。</p>
+        </div>
+    </footer>
+
+    <script src="test-data.js"></script>
+    <script src="history.js"></script>
+</body>
+</html>

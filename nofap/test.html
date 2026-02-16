@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戒色知识测试 - 戒色笔记</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Language Toggle Button -->
+    <button id="langToggle" class="lang-toggle" aria-label="Switch Language">
+        中文 / English
+    </button>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span data-i18n="logo">戒色笔记</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#features" data-i18n="nav.features">功能</a>
+                    <a href="checkin.html" data-i18n="nav.checkin">每日打卡</a>
+                    <a href="notes.html" data-i18n="nav.notes">学习笔记</a>
+                    <a href="test.html" class="active" data-i18n="nav.test">知识测试</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Test Section -->
+    <section class="test-section">
+        <div class="container">
+            <div class="test-header">
+                <h1 class="section-title" data-i18n="test.title">戒色知识自测 (35题)</h1>
+                <p class="test-intro" data-i18n="test.intro">请认真回答以下问题，以检验你对戒色知识的掌握程度。</p>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-info">
+                        <span data-i18n="test.progress">完成进度:</span>
+                        <span id="progressText">0/35</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <a href="history.html" class="btn-secondary" style="font-size: 0.9rem; padding: 6px 16px;">
+                        <span data-i18n="test.history">查看历史记录</span>
+                    </a>
+                </div>
+            </div>
+
+            <form id="testForm" class="test-form">
+                <div id="questionsContainer" class="questions-list">
+                    <!-- Questions will be injected here by JS -->
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn" class="btn-primary" data-i18n="test.submit">提交测试</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p data-i18n="footer.copyright">&copy; 2024 戒色笔记. All rights reserved. 愿你归来仍是少年。</p>
+        </div>
+    </footer>
+
+    <script src="test-data.js"></script>
+    <script src="test.js"></script>
+</body>
+</html>

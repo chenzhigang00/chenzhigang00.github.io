@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relapse Types - NoFap Notes</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css"> <!-- Reusing button styles -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         .relapse-grid {
@@ -41,12 +42,14 @@
             font-size: 0.95rem;
             line-height: 1.6;
         }
-        .icon-warn {
-            color: var(--danger-color);
-        }
     </style>
 </head>
 <body>
+
+    <!-- Language Toggle Button -->
+    <button id="langToggle" class="lang-toggle" aria-label="Switch Language">
+        中文 / English
+    </button>
 
     <!-- Navigation Bar -->
     <header>
@@ -56,14 +59,15 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
-                    NoFap Notes
+                    <span data-i18n="logo">NoFap Notes</span>
                 </a>
                 <div class="nav-links">
-                    <a href="checkin.html">Check-in</a>
-                    <a href="notes.html">Notes</a>
-                    <a href="relapse-types.html" class="active">Relapse Types</a>
-                    <a href="test.html">Test</a>
-                    <a href="exam.html">Exam</a>
+                    <a href="index.html#features" data-i18n="nav.features">Features</a>
+                    <a href="checkin.html" data-i18n="nav.checkin">Check-in</a>
+                    <a href="notes.html" data-i18n="nav.notes">Notes</a>
+                    <a href="relapse-types.html" class="active" data-i18n="nav.relapse">Relapse Types</a>
+                    <a href="test.html" data-i18n="nav.test">Knowledge Test</a>
+                    <a href="exam.html" data-i18n="nav.exam">Exam</a>
                 </div>
             </nav>
         </div>
@@ -73,103 +77,12 @@
     <section class="hero" style="padding: 60px 0 40px;">
         <div class="container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <h1 style="font-size: 2.5rem;">Common Relapse Types</h1>
-                <p>Understanding these triggers is the first step to mastering them. Vigilance is key.</p>
+                <h1 style="font-size: 2.5rem;" data-i18n="page.title">Common Relapse Types</h1>
+                <p data-i18n="page.subtitle">Understanding these triggers is the first step to mastering them. Vigilance is key.</p>
             </div>
 
-            <div class="relapse-grid">
-                <div class="relapse-card">
-                    <h3>😡 Emotional Relapse</h3>
-                    <p>Triggered by boredom, anger, suppression, irritability, or fatigue. Emotional instability often seeks relief.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>❓ Doubt Relapse</h3>
-                    <p>Starts with a doubt about the process, leading to wavering resolve, and finally relapse.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>👀 Temptation Relapse</h3>
-                    <p>Exposure to images, videos, or dirty jokes. Guard your eyes and ears.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🛌 Snoozing Relapse</h3>
-                    <p>Staying in bed too long after waking up. Very common; get up immediately.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>😫 Stress Relapse</h3>
-                    <p>Seeking escape from pressure in work, life, or study.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>💭 Fantasy Relapse</h3>
-                    <p>Intentional fantasizing (memories or imagination). Often the prelude to physical relapse.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>😌 Complacency Relapse</h3>
-                    <p>Thinking you have succeeded and letting your guard down. "One slip is enough."</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🎉 Euphoria Relapse</h3>
-                    <p>Getting carried away when happy or celebrating, leading to indulgence.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🧪 Testing Willpower</h3>
-                    <p>Deliberately exposing yourself to test if you can handle it. Never do this.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🌅 Morning Wood Relapse</h3>
-                    <p>Touching or dwelling on morning erections leading to loss of control.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>⚙️ Performance Testing</h3>
-                    <p>Those with PE/ED trying to "test" if they are healed. Usually ends in failure.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🗣️ Peer Pressure</h3>
-                    <p>Being led astray by bad friends or visiting inappropriate places.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🍺 Alcohol Relapse</h3>
-                    <p>Alcohol weakens judgment and acts as a catalyst for lust.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>💧 Post-Wet Dream</h3>
-                    <p>The "chaser effect" after a wet dream makes one easily waver.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>📅 Weekend Relapse</h3>
-                    <p>Being alone and bored during weekends allows inner demons to arise.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>💊 Supplement Relapse</h3>
-                    <p>Over-supplementing without mental cultivation increases energy that has nowhere to go.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🥩 Meat Diet Relapse</h3>
-                    <p>Excessive consumption of meat can fuel desire and make control difficult.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>📉 "Harmlessness" Relapse</h3>
-                    <p>Being swayed by the theory that "masturbation is harmless" and losing motivation.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>👫 Girlfriend Relapse</h3>
-                    <p>Intimacy requires higher willpower to maintain boundaries.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>💍 Wife Relapse</h3>
-                    <p>Similar to the above, requiring strong mental discipline.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🔄 Habitual Relapse</h3>
-                    <p>Relapse becomes a subconscious habit with strong inertia.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🏖️ Holiday Relapse</h3>
-                    <p>Free time during summer/winter breaks often leads to loss of control.</p>
-                </div>
-                <div class="relapse-card">
-                    <h3>🧘 Unorthodox Methods</h3>
-                    <p>Practicing PC muscle training or "enlargement" methods often triggers lust.</p>
-                </div>
+            <div id="relapseGrid" class="relapse-grid">
+                <!-- Cards will be injected by JS -->
             </div>
         </div>
     </section>
@@ -177,9 +90,11 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 NoFap Notes. All rights reserved. Stay true to yourself.</p>
+            <p data-i18n="footer.copyright">&copy; 2024 NoFap Notes. All rights reserved. Stay true to yourself.</p>
         </div>
     </footer>
 
+    <script src="relapse-data.js"></script>
+    <script src="relapse.js"></script>
 </body>
 </html>

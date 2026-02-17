@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[2420,["/hpc/_next/static/chunks/6bf2a077e992addd.js","/hpc/_next/static/chunks/fbc9446f6fc1766f.js"],"ViewportBoundary"]
+3:I[2420,["/hpc/_next/static/chunks/6bf2a077e992addd.js","/hpc/_next/static/chunks/fbc9446f6fc1766f.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[21236,["/hpc/_next/static/chunks/6bf2a077e992addd.js","/hpc/_next/static/chunks/fbc9446f6fc1766f.js"],"IconMark"]
+0:{"buildId":"McP33T3NBj9OQW44QFGQ_","rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"HPC Nexus | High Performance Computing Notes"}],["$","meta","1",{"name":"description","content":"Advanced notes on Rust, PyTorch, and HPC systems."}],["$","link","2",{"rel":"icon","href":"/hpc/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L5","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}

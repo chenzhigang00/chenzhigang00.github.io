@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raise Vibration - NoFap Notes</title>
+    <title>Harms of PMO - NoFap Notes</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="test.css"> <!-- Reusing button styles -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .vibration-grid {
+        .harm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
             margin-top: 40px;
         }
-        .vibration-card {
+        .harm-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
@@ -27,12 +27,12 @@
             flex-direction: column;
             align-items: flex-start;
         }
-        .vibration-card:hover {
+        .harm-card:hover {
             transform: translateY(-5px);
-            border-color: var(--success-color);
-            box-shadow: 0 10px 30px -10px var(--success-glow);
+            border-color: var(--danger-color);
+            box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.2);
         }
-        .vibration-icon {
+        .harm-icon {
             font-size: 2.5rem;
             margin-bottom: 16px;
             background: rgba(255, 255, 255, 0.05);
@@ -44,22 +44,62 @@
             justify-content: center;
             border: 1px solid var(--border-color);
         }
-        .vibration-card h3 {
-            color: var(--success-color);
+        .harm-card h3 {
+            color: var(--danger-color);
             font-size: 1.2rem;
             margin-bottom: 12px;
             font-weight: 700;
         }
-        .vibration-card p {
+        .harm-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
         }
+
+        .section-divider {
+            margin: 60px 0 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .section-divider h2 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+        .section-divider span {
+            background: var(--card-bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
         
-        /* High Energy Theme Override */
-        :root {
-            --success-color: #10b981; /* Emerald 500 */
-            --success-glow: rgba(16, 185, 129, 0.4);
+        /* Psycho grid simpler style */
+        .psycho-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .psycho-card {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .psycho-card:hover {
+            background: rgba(239, 68, 68, 0.1);
+            transform: scale(1.05);
+        }
+        .psycho-card h3 {
+            color: var(--danger-color);
+            font-size: 1.1rem;
+            margin: 0;
         }
     </style>
 </head>
@@ -85,9 +125,9 @@
                     <a href="checkin.html" data-i18n="nav.checkin">Check-in</a>
                     <a href="notes.html" data-i18n="nav.notes">Notes</a>
                     <a href="relapse-types.html" data-i18n="nav.relapse">Relapse Types</a>
-                    <a href="harm.html" data-i18n="nav.harm">Harms</a>
-                    <a href="vibration.html" class="active" data-i18n="nav.vibration">Raise Vibration</a>
-                    <a href="test.html" data-i18n="nav.test">Knowledge Test</a>
+                    <a href="harm.html" class="active" data-i18n="nav.harm">Harms</a>
+                    <a href="vibration.html" data-i18n="nav.vibration">Raise Vibration</a>
+                    <a href="test.html" data-i18n="nav.test">Test</a>
                     <a href="exam.html" data-i18n="nav.exam">Exam</a>
                 </div>
             </nav>
@@ -98,13 +138,29 @@
     <section class="hero" style="padding: 60px 0 40px;">
         <div class="container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <h1 style="font-size: 2.5rem; background: linear-gradient(to right, #fff, var(--success-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-i18n="page.title">Raise Your Vibration</h1>
-                <p data-i18n="page.subtitle">High frequency energy attracts positivity. Here are 16 ways to elevate your state of being.</p>
+                <h1 style="font-size: 2.5rem; color: var(--danger-color);" data-i18n="page.title">Harms of PMO</h1>
+                <p data-i18n="page.subtitle">Understanding the consequences is crucial for recovery. Kidney essence is the currency of health.</p>
             </div>
 
-            <div id="vibrationGrid" class="vibration-grid">
-                <!-- Cards will be injected by JS -->
+            <!-- Physical Harms -->
+            <div class="section-divider">
+                <h2 data-i18n="harm.physical">Physical Consequences</h2>
+                <span data-i18n="harm.physical.count">17 Types</span>
             </div>
+            <div id="physicalGrid" class="harm-grid">
+                <!-- Cards injected by JS -->
+            </div>
+
+            <!-- Psychological Harms -->
+            <div class="section-divider">
+                <h2 data-i18n="harm.psycho">Psychological Consequences</h2>
+                <span data-i18n="harm.psycho.count">9 Types</span>
+            </div>
+            <p style="color: var(--text-muted); margin-bottom: 20px;" data-i18n="harm.psycho.desc">While these may not be directly fatal, they can cause immense suffering and reduce quality of life.</p>
+            <div id="psychoGrid" class="psycho-grid">
+                <!-- Cards injected by JS -->
+            </div>
+
         </div>
     </section>
 
@@ -115,7 +171,7 @@
         </div>
     </footer>
 
-    <script src="vibration-data.js"></script>
-    <script src="vibration.js"></script>
+    <script src="harm-data.js"></script>
+    <script src="harm.js"></script>
 </body>
 </html>

@@ -204,8 +204,12 @@ nav {
     font-size: 1.25rem;
     color: var(--text-muted);
     max-width: 600px;
-    margin: 0 0 40px;
+    margin: 0 auto 40px;
     line-height: 1.7;
+}
+
+.hero-content p {
+    margin: 0 0 40px;
 }
 
 .hero-image {

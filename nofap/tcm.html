@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中医：五劳七伤 - NoFap Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tcm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .tcm-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .tcm-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.2);
+        }
+        .tcm-card h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .tcm-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .tcm-card .number-badge {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.05);
+        }
+
+        .section-divider {
+            margin: 60px 0 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .section-divider h2 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+        .section-divider span {
+            background: var(--card-bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>NoFap Notes</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#features">Features</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="notes.html">Notes</a>
+                    <a href="relapse-types.html">Relapse Types</a>
+                    <a href="harm.html">Harms</a>
+                    <a href="vibration.html">Raise Vibration</a>
+                    <a href="tcm.html" class="active">TCM</a>
+                    <a href="test.html">Test</a>
+                    <a href="exam.html">Exam</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <section class="hero" style="padding: 60px 0 40px;">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h1 style="font-size: 2.5rem; color: var(--primary-color);">中医：五劳七伤</h1>
+                <p>《黄帝内经》中关于起居不慎导致脏腑气血损伤的理论。</p>
+            </div>
+
+            <!-- 五劳 -->
+            <div class="section-divider">
+                <h2>五劳</h2>
+                <span>5 Types</span>
+            </div>
+            <div class="tcm-grid">
+                <div class="tcm-card">
+                    <div class="number-badge">1</div>
+                    <h3>久视伤血</h3>
+                    <p>长时间看书、看手机电脑，耗损心血和肝血。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">2</div>
+                    <h3>久卧伤气</h3>
+                    <p>长时间躺卧不活动，会导致气机运行不畅，使气变得虚弱。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">3</div>
+                    <h3>久坐伤肉</h3>
+                    <p>长时间坐着，会导致脾胃运化失常，气血运行不畅，损伤肌肉。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">4</div>
+                    <h3>久立伤骨</h3>
+                    <p>长时间站立，气血下沉，会损伤肾脏和骨骼。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">5</div>
+                    <h3>久行伤筋</h3>
+                    <p>长时间行走或过度劳累，会导致肝血不足，筋脉失养。</p>
+                </div>
+            </div>
+
+            <!-- 七伤 -->
+            <div class="section-divider">
+                <h2>七伤</h2>
+                <span>7 Types</span>
+            </div>
+            <div class="tcm-grid">
+                <div class="tcm-card">
+                    <div class="number-badge">1</div>
+                    <h3>大饱伤脾</h3>
+                    <p>暴饮暴食，吃得过饱，极大增加脾胃负担从而伤脾。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">2</div>
+                    <h3>大怒气逆伤肝</h3>
+                    <p>发大脾气会导致气血逆乱，首先损伤的就是肝的疏泄功能。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">3</div>
+                    <h3>强力举重久坐湿地伤肾</h3>
+                    <p>用力过度举重物，或长时间坐在潮湿的地方，寒湿内侵伤肾。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">4</div>
+                    <h3>形寒饮冷伤肺</h3>
+                    <p>身体受寒或饮用过冷的食物，寒邪会直接侵袭损伤肺气。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">5</div>
+                    <h3>忧愁思虑伤心</h3>
+                    <p>过度忧愁和思虑，心血暗耗，损伤心脏和心神。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">6</div>
+                    <h3>风雨寒暑伤形</h3>
+                    <p>受到外在邪气（四时不正常气候）的过度侵袭，会损伤形体。</p>
+                </div>
+                <div class="tcm-card">
+                    <div class="number-badge">7</div>
+                    <h3>恐惧不节伤志</h3>
+                    <p>过度恐惧或生活（如房事）缺乏节制，不仅伤命门之火，还损伤神志。</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NoFap Notes. All rights reserved. Stay true to yourself.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

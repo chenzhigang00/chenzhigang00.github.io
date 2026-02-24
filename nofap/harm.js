@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const langToggleBtn = document.getElementById('langToggle');
-    const vibrationGrid = document.getElementById('vibrationGrid');
+    const physicalGrid = document.getElementById('physicalGrid');
+    const psychoGrid = document.getElementById('psychoGrid');
     
     // UI Elements to translate
     const i18nElements = document.querySelectorAll('[data-i18n]');
@@ -19,8 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav.vibration': '提升能量',
             'nav.test': '知识测试',
             'nav.exam': '综合考试',
-            'page.title': '提高振动频率的方法',
-            'page.subtitle': '高频能量吸引美好事物。这里有16种提升生命状态的方法。',
+            'page.title': '破戒的危害',
+            'page.subtitle': '了解危害是恢复健康的第一步。肾精是人体的健康货币。',
+            'harm.physical': '生理危害',
+            'harm.physical.count': '17类',
+            'harm.psycho': '心理危害',
+            'harm.psycho.count': '9类',
+            'harm.psycho.desc': '虽然这些可能不直接致命，但会带来巨大的痛苦，严重降低生活质量。',
             'footer.copyright': '&copy; 2024 戒色笔记. All rights reserved. 愿你归来仍是少年。'
         },
         'en': {
@@ -33,14 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav.vibration': 'Raise Vibration',
             'nav.test': 'Knowledge Test',
             'nav.exam': 'Exam',
-            'page.title': 'Raise Your Vibration',
-            'page.subtitle': 'High frequency energy attracts positivity. Here are 16 ways to elevate your state of being.',
+            'page.title': 'Harms of PMO',
+            'page.subtitle': 'Understanding the consequences is crucial for recovery. Kidney essence is the currency of health.',
+            'harm.physical': 'Physical Consequences',
+            'harm.physical.count': '17 Types',
+            'harm.psycho': 'Psychological Consequences',
+            'harm.psycho.count': '9 Types',
+            'harm.psycho.desc': 'While these may not be directly fatal, they can cause immense suffering and reduce quality of life.',
             'footer.copyright': '&copy; 2024 NoFap Notes. All rights reserved. Stay true to yourself.'
         }
     };
 
     // Initialize
-    renderVibrationCards();
+    renderHarmCards();
     updateStaticUI();
 
     // Language Toggle Event
@@ -49,23 +60,36 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLanguage();
     });
 
-    function renderVibrationCards() {
-        vibrationGrid.innerHTML = '';
-
-        vibrationData.forEach((item, index) => {
+    function renderHarmCards() {
+        // Physical Harms
+        physicalGrid.innerHTML = '';
+        harmData.physical.forEach((item, index) => {
             const card = document.createElement('div');
-            card.className = 'vibration-card';
+            card.className = 'harm-card';
             
             const title = item.title[currentLang];
             const desc = item.desc[currentLang];
 
             card.innerHTML = `
-                <div class="vibration-icon">${item.icon}</div>
+                <div class="harm-icon">${item.icon}</div>
                 <h3>${index + 1}. ${title}</h3>
                 <p>${desc}</p>
             `;
+            physicalGrid.appendChild(card);
+        });
+
+        // Psychological Harms
+        psychoGrid.innerHTML = '';
+        harmData.psychological.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'psycho-card';
             
-            vibrationGrid.appendChild(card);
+            const title = item.title[currentLang];
+
+            card.innerHTML = `
+                <h3>${index + 1}. ${title}</h3>
+            `;
+            psychoGrid.appendChild(card);
         });
     }
 
@@ -83,6 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateLanguage() {
         updateStaticUI();
-        renderVibrationCards();
+        renderHarmCards();
     }
 });

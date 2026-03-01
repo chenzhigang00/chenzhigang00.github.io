@@ -1,60 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codex | Zhigang Chen</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <main class="page-shell">
-        <section class="panel">
-            <header class="hero">
-                <a class="back-link" href="/">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Back to portal</span>
-                </a>
-                <p class="eyebrow">Codex</p>
-                <h1>Classic Snake</h1>
-                <p class="subtitle">A minimal Snake page inside this GitHub Pages site.</p>
-            </header>
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
 
-            <section class="game-card" aria-label="Snake game">
-                <div class="hud">
-                    <div class="score-card">
-                        <span class="label">Score</span>
-                        <strong id="score">0</strong>
-                    </div>
-                    <div class="actions">
-                        <button id="pause-button" type="button">Pause</button>
-                        <button id="restart-button" type="button">Restart</button>
-                    </div>
+    <nav class="navbar">
+        <a class="back-link" href="/">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Portal</span>
+        </a>
+        <div class="nav-brand">CODEX</div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1 class="gradient-text">The Codex</h1>
+            <p class="subtitle">A curated collection of experiments, snippets, and interactive performances.</p>
+        </header>
+
+        <div class="grid">
+            <!-- Snake Game Card -->
+            <section class="card game-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-gamepad"></i> Classic Snake</h2>
+                    <span class="badge">Performance Show</span>
                 </div>
-
-                <p class="status" id="status">Use arrow keys or WASD to start.</p>
-
-                <div class="board-wrap">
-                    <div id="board" class="board" role="grid" aria-label="Snake board"></div>
-                </div>
-
-                <div class="controls" aria-label="Touch controls">
-                    <button data-direction="up" type="button">Up</button>
-                    <div class="controls-row">
-                        <button data-direction="left" type="button">Left</button>
-                        <button data-direction="down" type="button">Down</button>
-                        <button data-direction="right" type="button">Right</button>
+                <div class="card-content">
+                    <div class="hud">
+                        <div class="score-card">
+                            <span class="label">Score</span>
+                            <strong id="score">0</strong>
+                        </div>
+                        <div class="actions">
+                            <button id="pause-button" class="glass-btn" title="Pause"><i
+                                    class="fas fa-pause"></i></button>
+                            <button id="restart-button" class="glass-btn" title="Restart"><i
+                                    class="fas fa-redo"></i></button>
+                        </div>
+                    </div>
+                    <p class="status" id="status">Use arrow keys or WASD.</p>
+                    <div class="board-wrap">
+                        <div id="board" class="board" role="grid" aria-label="Snake board"></div>
+                    </div>
+                    <div class="controls" aria-label="Touch controls">
+                        <button data-direction="up" class="glass-btn"><i class="fas fa-chevron-up"></i></button>
+                        <div class="controls-row">
+                            <button data-direction="left" class="glass-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button data-direction="down" class="glass-btn"><i class="fas fa-chevron-down"></i></button>
+                            <button data-direction="right" class="glass-btn"><i
+                                    class="fas fa-chevron-right"></i></button>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="notes">
-                <h2>Controls</h2>
-                <p>Use arrow keys or WASD. Press <code>P</code> or the pause button to pause. Use restart after game over.</p>
+            <!-- Other Mock Cards -->
+            <section class="card feature-card">
+                <div class="card-icon"><i class="fas fa-brain"></i></div>
+                <h3>Neural Networks</h3>
+                <p>Exploring lightweight machine learning models implemented in pure JavaScript directly in the browser.
+                </p>
+                <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
             </section>
-        </section>
+
+            <section class="card feature-card">
+                <div class="card-icon"><i class="fas fa-cube"></i></div>
+                <h3>WebGL Renderings</h3>
+                <p>Dynamic 3D visualizations, procedural generation, and custom shaders running smoothly via WebGL.</p>
+                <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <section class="card feature-card">
+                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>Distributed Systems</h3>
+                <p>Interactive notes on consensus algorithms, p2p networking, and reliable decentralized architectures.
+                </p>
+                <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
+            </section>
+        </div>
     </main>
 
     <script type="module" src="./snake.js"></script>
 </body>
+
 </html>

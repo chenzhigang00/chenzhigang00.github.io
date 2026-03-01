@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex | Zhigang Chen</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main class="page-shell">
+        <section class="panel">
+            <header class="hero">
+                <a class="back-link" href="/">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to portal</span>
+                </a>
+                <p class="eyebrow">Codex</p>
+                <h1>Classic Snake</h1>
+                <p class="subtitle">A minimal Snake page inside this GitHub Pages site.</p>
+            </header>
+
+            <section class="game-card" aria-label="Snake game">
+                <div class="hud">
+                    <div class="score-card">
+                        <span class="label">Score</span>
+                        <strong id="score">0</strong>
+                    </div>
+                    <div class="actions">
+                        <button id="pause-button" type="button">Pause</button>
+                        <button id="restart-button" type="button">Restart</button>
+                    </div>
+                </div>
+
+                <p class="status" id="status">Use arrow keys or WASD to start.</p>
+
+                <div class="board-wrap">
+                    <div id="board" class="board" role="grid" aria-label="Snake board"></div>
+                </div>
+
+                <div class="controls" aria-label="Touch controls">
+                    <button data-direction="up" type="button">Up</button>
+                    <div class="controls-row">
+                        <button data-direction="left" type="button">Left</button>
+                        <button data-direction="down" type="button">Down</button>
+                        <button data-direction="right" type="button">Right</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="notes">
+                <h2>Controls</h2>
+                <p>Use arrow keys or WASD. Press <code>P</code> or the pause button to pause. Use restart after game over.</p>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="./snake.js"></script>
+</body>
+</html>

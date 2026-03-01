@@ -4,95 +4,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codex | Zhigang Chen</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Zhigang Chen | Codex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div class="background-effects">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
+    <div class="page-wrapper">
+        <div class="bg-blur"></div>
+
+        <!-- Decoration Patterns -->
+        <div class="decor decor-1">
+            > > > > > > > > > > _ _ _ _ _ _ _<br>
+            > > > > > > > > > > _ _ _ _ _ _ _<br>
+            > > > > > > > > > > _ _ _ _ _ _ _<br>
+            > > > > > > > > > > _ _ _ _ _ _ _<br>
+            > > > > > > > > > > _ _ _ _ _ _ _
+        </div>
+        <div class="decor decor-2">
+            _ _ _ _ _ _ _ _ <br>
+            _ _ _ _ _ _ _ _ <br>
+            _ _ _ _ _ _ _ _
+        </div>
+
+        <nav class="navbar">
+            <a href="/" class="nav-brand">
+                <div class="logo-mark"></div>
+                Zhigang Chen
+            </a>
+            <a class="nav-link" href="/">Back to Portal</a>
+        </nav>
+
+        <main class="content">
+            <div class="hero">
+                <!-- Video Logo -->
+                <video src="./codex.mp4" autoplay muted loop playsinline
+                    style="width: 120px; border-radius: 20%; margin: 0 auto 1.5rem; display: block; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);">
+                </video>
+                <h1>Codex</h1>
+                <p>Try with Free and Go, or enjoy 2x rate limits on other plans for a limited time.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary">Try in your IDE <span class="chevron">▼</span></button>
+                    <button class="btn-secondary">Join the Codex app waitlist</button>
+                </div>
+            </div>
+
+            <div class="ide-wrapper">
+                <div class="ide-sidebar">
+                    <div class="window-controls">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="active"><span class="icon">📝</span> New thread</li>
+                        <li><span class="icon">⚡</span> Automations</li>
+                        <li><span class="icon">📦</span> Skills</li>
+                    </ul>
+                </div>
+
+                <div class="ide-main">
+                    <div class="ide-header">
+                        <div class="header-left">
+                            <strong>Create Codex app CTA</strong>
+                            <span class="header-path">📁 zhigang/codex</span>
+                        </div>
+                        <div class="header-right">
+                            <span class="changes-text">1 file changed <span style="color: #22c55e;">+266</span></span>
+                            <button class="ide-btn">Open</button>
+                            <button class="ide-btn commit-btn">✓ Commit</button>
+                        </div>
+                    </div>
+
+                    <div class="ide-content" id="chat-container">
+                        <div class="chat-bubble chat-user">
+                            Build a classic snake game that is playable right here inside this window.
+                        </div>
+
+                        <div class="chat-bubble chat-ai">
+                            <div class="typewriter-text" id="ai-response-text"></div>
+
+                            <!-- The Game UI inside the IDE -->
+                            <div id="game-wrapper" class="game-view" style="display: none; opacity: 0;">
+                                <div class="hud">
+                                    <div class="score-card">
+                                        <span class="label">Score</span>
+                                        <strong id="score">0</strong>
+                                    </div>
+                                    <div class="actions">
+                                        <button id="pause-button" class="glass-btn">Pause</button>
+                                        <button id="restart-button" class="glass-btn">Restart</button>
+                                    </div>
+                                </div>
+                                <p class="status" id="status">Use arrow keys or WASD.</p>
+                                <div class="board-wrap">
+                                    <div id="board" class="board" role="grid"></div>
+                                </div>
+
+                                <!-- Mobile Controls Hidden visually by default but kept for JS -->
+                                <div class="controls" style="display:none">
+                                    <button data-direction="up">Up</button>
+                                    <button data-direction="left">Left</button>
+                                    <button data-direction="down">Down</button>
+                                    <button data-direction="right">Right</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <nav class="navbar">
-        <a class="back-link" href="/">
-            <i class="fas fa-arrow-left"></i>
-            <span>Back to Portal</span>
-        </a>
-        <div class="nav-brand">CODEX</div>
-    </nav>
-
-    <main class="container">
-        <header class="hero">
-            <h1 class="gradient-text">The Codex</h1>
-            <p class="subtitle">A curated collection of experiments, snippets, and interactive performances.</p>
-        </header>
-
-        <div class="grid">
-            <!-- Snake Game Card -->
-            <section class="card game-card">
-                <div class="card-header">
-                    <h2><i class="fas fa-gamepad"></i> Classic Snake</h2>
-                    <span class="badge">Performance Show</span>
-                </div>
-                <div class="card-content">
-                    <div class="hud">
-                        <div class="score-card">
-                            <span class="label">Score</span>
-                            <strong id="score">0</strong>
-                        </div>
-                        <div class="actions">
-                            <button id="pause-button" class="glass-btn" title="Pause"><i
-                                    class="fas fa-pause"></i></button>
-                            <button id="restart-button" class="glass-btn" title="Restart"><i
-                                    class="fas fa-redo"></i></button>
-                        </div>
-                    </div>
-                    <p class="status" id="status">Use arrow keys or WASD.</p>
-                    <div class="board-wrap">
-                        <div id="board" class="board" role="grid" aria-label="Snake board"></div>
-                    </div>
-                    <div class="controls" aria-label="Touch controls">
-                        <button data-direction="up" class="glass-btn"><i class="fas fa-chevron-up"></i></button>
-                        <div class="controls-row">
-                            <button data-direction="left" class="glass-btn"><i class="fas fa-chevron-left"></i></button>
-                            <button data-direction="down" class="glass-btn"><i class="fas fa-chevron-down"></i></button>
-                            <button data-direction="right" class="glass-btn"><i
-                                    class="fas fa-chevron-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Other Mock Cards -->
-            <section class="card feature-card">
-                <div class="card-icon"><i class="fas fa-brain"></i></div>
-                <h3>Neural Networks</h3>
-                <p>Exploring lightweight machine learning models implemented in pure JavaScript directly in the browser.
-                </p>
-                <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
-            </section>
-
-            <section class="card feature-card">
-                <div class="card-icon"><i class="fas fa-cube"></i></div>
-                <h3>WebGL Renderings</h3>
-                <p>Dynamic 3D visualizations, procedural generation, and custom shaders running smoothly via WebGL.</p>
-                <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
-            </section>
-
-            <section class="card feature-card">
-                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
-                <h3>Distributed Systems</h3>
-                <p>Interactive notes on consensus algorithms, p2p networking, and reliable decentralized architectures.
-                </p>
-                <a href="#" class="read-more">Explore <i class="fas fa-arrow-right"></i></a>
-            </section>
-        </div>
-    </main>
-
+    <!-- The original snake logic -->
     <script type="module" src="./snake.js"></script>
+    <script>
+        const textToType = "Sure! I've embedded a fully functional classic Snake engine. Use your keyboard's arrow keys or W A S D to control it. Enjoy! ✨";
+        let charIndex = 0;
+        const typeTarget = document.getElementById("ai-response-text");
+        const gameWrapper = document.getElementById("game-wrapper");
+        const chatContainer = document.getElementById("chat-container");
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                typeTarget.innerHTML += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 30);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            } else {
+                gameWrapper.style.display = "block";
+                setTimeout(() => {
+                    gameWrapper.style.opacity = "1";
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }, 50);
+            }
+        }
+
+        setTimeout(typeWriter, 1200);
+
+        // Prevent arrow keys from scrolling the ide-content while playing game
+        window.addEventListener("keydown", function (e) {
+            if (["Space", "ArrowUp", "ArrowDown", "Left", "Right", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+                if (document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+                    e.preventDefault();
+                }
+            }
+        }, false);
+    </script>
 </body>
 
 </html>

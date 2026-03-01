@@ -11,7 +11,8 @@ html {
     margin: 0;
     padding: 0;
     font-family: var(--font-inter);
-    background: var(--bg-gradient);
+    background: #000;
+    /* Pure black background base */
     min-height: 100vh;
     color: #000;
     overflow-x: hidden;
@@ -40,7 +41,7 @@ html {
         radial-gradient(circle at 75% 35%, rgba(200, 220, 255, 0.7) 0%, transparent 40%),
         radial-gradient(circle at 25% 65%, rgba(160, 180, 255, 0.5) 0%, transparent 45%);
     filter: blur(80px);
-    z-index: -1;
+    z-index: -3;
     pointer-events: none;
 }
 
@@ -343,6 +344,24 @@ html {
     gap: 2rem;
 }
 
+/* Custom Dark Scrollbar for IDE */
+.ide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ide-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ide-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+.ide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
 .chat-bubble {
     max-width: 85%;
     font-size: 0.95rem;
@@ -459,4 +478,70 @@ html {
     border-radius: 50%;
     transform: scale(0.8);
     box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* Background video and foreground canvas */
+.pointer-events-none {
+    pointer-events: none;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.text-white-80 {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    object-fit: cover;
+    opacity: 1;
+    mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 85%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 85%);
+}
+
+#ascii-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 120ms ease;
+    mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 85%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 85%);
+}
+
+.footer-cta {
+    text-align: center;
+    padding: 8rem 2rem 5rem;
+    color: #fff;
+}
+
+.footer-cta h2 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.footer-cta p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
 }

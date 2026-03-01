@@ -11,21 +11,15 @@
 
 <body>
     <div class="page-wrapper">
+        <!-- Background Video -->
+        <video id="bg-video" autoplay muted loop playsinline class="bg-video">
+            <source src="./floral_a-h264.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <!-- Canvas for ASCII effect -->
+        <canvas id="ascii-canvas" data-ascii-overlay-state="ready"
+            class="pointer-events-none absolute inset-0 text-white-80"></canvas>
         <div class="bg-blur"></div>
-
-        <!-- Decoration Patterns -->
-        <div class="decor decor-1">
-            > > > > > > > > > > _ _ _ _ _ _ _<br>
-            > > > > > > > > > > _ _ _ _ _ _ _<br>
-            > > > > > > > > > > _ _ _ _ _ _ _<br>
-            > > > > > > > > > > _ _ _ _ _ _ _<br>
-            > > > > > > > > > > _ _ _ _ _ _ _
-        </div>
-        <div class="decor decor-2">
-            _ _ _ _ _ _ _ _ <br>
-            _ _ _ _ _ _ _ _ <br>
-            _ _ _ _ _ _ _ _
-        </div>
 
         <nav class="navbar">
             <a href="/" class="nav-brand">
@@ -117,8 +111,16 @@
                     </div>
                 </div>
             </div>
+
+            <footer class="footer-cta">
+                <h2>Try Codex today</h2>
+                <p>You can just build things.</p>
+            </footer>
         </main>
     </div>
+
+    <!-- Canvas ASCII Effect -->
+    <script src="./canvas-effect.js"></script>
 
     <!-- The original snake logic -->
     <script type="module" src="./snake.js"></script>

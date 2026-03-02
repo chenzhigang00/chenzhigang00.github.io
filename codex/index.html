@@ -10,29 +10,24 @@
 </head>
 
 <body>
+    <button id="exit-fullscreen-btn" class="exit-fullscreen-btn">✕ Exit Fullscreen</button>
     <div class="page-wrapper">
-        <!-- Background Video -->
         <video id="bg-video" autoplay muted loop playsinline class="bg-video">
             <source src="./floral_a-h264.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
-        <!-- Canvas for ASCII effect -->
         <canvas id="ascii-canvas" data-ascii-overlay-state="ready"
             class="pointer-events-none absolute inset-0 text-white-80"></canvas>
         <div class="bg-blur"></div>
 
         <nav class="navbar">
-            <a href="/" class="nav-brand">
-                Zhigang Chen
-            </a>
+            <a href="/" class="nav-brand">Zhigang Chen</a>
             <a class="nav-link" href="/">Back to Portal</a>
         </nav>
 
         <main class="content">
             <div class="hero">
-                <!-- Video Logo -->
-                <video autoplay muted loop playsinline
-                    style="width: 120px; border-radius: 20%; margin: 0 auto 1.5rem; display: block; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);">
+                <video autoplay muted loop playsinline class="hero-logo">
                     <source src="./codex-h264.mp4" type="video/mp4">
                     Your browser does not support HTML5 video.
                 </video>
@@ -40,7 +35,7 @@
                 <p>Try with Free and Go, or enjoy 2x rate limits on other plans for a limited time.</p>
                 <div class="hero-actions">
                     <a href="vscode:extension/openai.chatgpt" class="btn-primary" style="text-decoration: none;">Try in
-                        your IDE <span class="chevron">▼</span></a>
+                        your IDE <span class="chevron">></span></a>
                     <a href="https://openai.com/form/codex-app/" target="_blank" rel="noopener noreferrer"
                         class="btn-secondary" style="text-decoration: none;">Join the Codex app waitlist</a>
                 </div>
@@ -54,60 +49,70 @@
                         <div class="dot green"></div>
                     </div>
                     <ul class="sidebar-menu">
-                        <li class="active"><span class="icon">📝</span> New thread</li>
-                        <li><span class="icon">⚡</span> Automations</li>
-                        <li><span class="icon">📦</span> Skills</li>
+                        <div class="sidebar-section">Recent Threads</div>
+                        <li class="active demo-tab" data-target="minecraft" data-src="./minecraft-dungeons/"
+                            data-title="Minecraft Dungeons Tribute"
+                            data-desc="A top-down action RPG built right into the browser."
+                            data-header="Integrate Minecraft Dungeons tribute"
+                            data-user="Build a Minecraft Dungeons-inspired game that is playable right here inside this window, with heroes, gear, and DLC-themed chapters."
+                            data-ai="Done. I've built a top-down action RPG demo complete with hero selection and loadout swapping, wrapped in this IDE view.">
+                            <span class="icon">💬</span> Minecraft Dungeons
+                        </li>
+                        <li class="demo-tab" data-target="snake" data-src="./snake.html" data-title="Classic Snake"
+                            data-desc="The classic retro game with grid-based movement."
+                            data-header="Classic Snake game"
+                            data-user="Build the classic Snake game that is playable right here inside this window. Make it look beautiful and modern."
+                            data-ai="Done. I have implemented a fully playable classic Snake game with a custom grid and retro style.">
+                            <span class="icon">�</span> Classic Snake
+                        </li>
+                        <div class="sidebar-section" style="margin-top: 1.5rem;">Tools</div>
+                        <li><span class="icon">⚙️</span> Automations</li>
+                        <li><span class="icon">📚</span> Skills</li>
                     </ul>
                 </div>
 
                 <div class="ide-main">
                     <div class="ide-header">
                         <div class="header-left">
-                            <strong>Create Codex app CTA</strong>
-                            <span class="header-path">📁 zhigang/codex</span>
+                            <strong>Integrate Minecraft Dungeons tribute</strong>
+                            <span class="header-path">repo zhigang/codex</span>
                         </div>
                         <div class="header-right">
-                            <span class="changes-text">1 file changed <span style="color: #22c55e;">+266</span></span>
+                            <span class="changes-text">app deployed</span>
                             <button class="ide-btn">Open</button>
-                            <button class="ide-btn commit-btn">✓ Commit</button>
+                            <button class="ide-btn commit-btn">Commit</button>
                         </div>
                     </div>
 
                     <div class="ide-content" id="chat-container">
                         <div class="chat-bubble chat-user">
-                            Build a classic snake game that is playable right here inside this window.
+                            Build a Minecraft Dungeons-inspired game that is playable right here inside this window,
+                            with heroes, gear, and DLC-themed chapters.
                         </div>
 
                         <div class="chat-bubble chat-ai">
                             <div class="typewriter-text" id="ai-response-text"></div>
 
-                            <!-- The Game UI inside the IDE -->
                             <div id="game-wrapper" class="game-view" style="display: none; opacity: 0;">
-                                <div class="hud">
-                                    <div class="score-card">
-                                        <span class="label">Score</span>
-                                        <strong id="score">0</strong>
+                                <div class="demo-header">
+                                    <div class="demo-copy">
+                                        <span class="label">Embedded Demo</span>
+                                        <strong>Minecraft Dungeons Tribute</strong>
+                                        <p>Hero selection, loadout panel, and chapter switching are live inside this
+                                            Codex page.</p>
                                     </div>
                                     <div class="actions">
-                                        <button id="pause-button" class="glass-btn">Pause</button>
-                                        <button id="restart-button" class="glass-btn">Restart</button>
+                                        <button id="open-fullscreen-btn" class="glass-btn">Open Fullscreen</button>
                                     </div>
                                 </div>
-                                <p class="status" id="status">Use arrow keys or WASD.</p>
-                                <div class="board-wrap">
-                                    <div id="board" class="board" role="grid"></div>
-                                </div>
-
-                                <!-- Mobile Controls Hidden visually by default but kept for JS -->
-                                <div class="controls" style="display:none">
-                                    <button data-direction="up">Up</button>
-                                    <button data-direction="left">Left</button>
-                                    <button data-direction="down">Down</button>
-                                    <button data-direction="right">Right</button>
+                                <p class="status" id="status">Use WASD or arrows to move, Space to attack, Shift to
+                                    roll, E for potion, and R to restart.</p>
+                                <div class="embed-wrap">
+                                    <iframe class="game-embed" src="./minecraft-dungeons/"
+                                        title="Minecraft Dungeons tribute game" loading="lazy"></iframe>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -119,25 +124,24 @@
         </main>
     </div>
 
-    <!-- Canvas ASCII Effect -->
     <script src="./canvas-effect.js"></script>
-
-    <!-- The original snake logic -->
-    <script type="module" src="./snake.js"></script>
     <script>
-        const textToType = "Sure! I've embedded a fully functional classic Snake engine. Use your keyboard's arrow keys or W A S D to control it. Enjoy! ✨";
         let charIndex = 0;
+        let isTyping = true;
+        let typingTimeout;
         const typeTarget = document.getElementById("ai-response-text");
         const gameWrapper = document.getElementById("game-wrapper");
         const chatContainer = document.getElementById("chat-container");
 
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                typeTarget.innerHTML += textToType.charAt(charIndex);
+        function typeWriter(text) {
+            if (charIndex < text.length && isTyping) {
+                typeTarget.innerHTML += text.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeWriter, 30);
+                typingTimeout = setTimeout(() => typeWriter(text), 18);
                 chatContainer.scrollTop = chatContainer.scrollHeight;
             } else {
+                isTyping = false;
+                typeTarget.innerHTML = text; // ensures it finishes if interrupted
                 gameWrapper.style.display = "block";
                 setTimeout(() => {
                     gameWrapper.style.opacity = "1";
@@ -146,16 +150,84 @@
             }
         }
 
-        setTimeout(typeWriter, 1200);
+        // Initial text load
+        const initialActiveTab = document.querySelector('.demo-tab.active');
+        setTimeout(() => typeWriter(initialActiveTab.dataset.ai), 700);
 
-        // Prevent arrow keys from scrolling the ide-content while playing game
         window.addEventListener("keydown", function (e) {
-            if (["Space", "ArrowUp", "ArrowDown", "Left", "Right", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+            if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.code)) {
                 if (document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
                     e.preventDefault();
                 }
             }
         }, false);
+
+        // Sidebar game switching logic
+        const tabs = document.querySelectorAll('.demo-tab');
+        const iframe = document.querySelector('.game-embed');
+        const demoTitle = document.querySelector('.demo-copy strong');
+        const demoDesc = document.querySelector('.demo-copy p');
+        const statusEl = document.getElementById('status');
+        const openBtn = document.getElementById('open-fullscreen-btn');
+        const exitBtn = document.getElementById('exit-fullscreen-btn');
+        const headerTitle = document.querySelector('.header-left strong');
+        const userChat = document.querySelector('.chat-user');
+
+        // Fullscreen Logic
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            iframe.classList.add('fullscreen');
+            exitBtn.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        });
+
+        exitBtn.addEventListener('click', () => {
+            iframe.classList.remove('fullscreen');
+            exitBtn.classList.remove('visible');
+            document.body.style.overflow = '';
+        });
+
+        // Close fullscreen on ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && iframe.classList.contains('fullscreen')) {
+                exitBtn.click();
+            }
+        });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                if (tab.classList.contains('active')) return; // ignore if already active
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update UI text content
+                headerTitle.textContent = tab.dataset.header;
+                userChat.textContent = tab.dataset.user;
+                demoTitle.textContent = tab.dataset.title;
+                demoDesc.textContent = tab.dataset.desc;
+
+                // Stop current typing if any, and reset visibility
+                clearTimeout(typingTimeout);
+                charIndex = 0;
+                isTyping = true;
+                typeTarget.innerHTML = "";
+                gameWrapper.style.opacity = "0";
+                gameWrapper.style.display = "none";
+
+                // Allow iframe to switch source
+                iframe.src = tab.dataset.src;
+
+                // Start typing the new AI response
+                typeWriter(tab.dataset.ai);
+
+                if (tab.dataset.target === 'minecraft') {
+                    statusEl.textContent = 'Use WASD or arrows to move, Space to attack, Shift to roll, E for potion, and R to restart.';
+                } else {
+                    statusEl.textContent = 'Use arrow keys or WASD to control the snake.';
+                }
+            });
+        });
     </script>
 </body>
 

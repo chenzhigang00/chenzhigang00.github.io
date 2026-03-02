@@ -112,6 +112,14 @@ html {
     padding: 4rem 2rem 5rem;
 }
 
+.hero-logo {
+    width: 120px;
+    border-radius: 20%;
+    margin: 0 auto 1.5rem;
+    display: block;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
 .app-icon {
     width: 88px;
     height: 88px;
@@ -251,6 +259,19 @@ html {
     margin: 0;
 }
 
+.sidebar-section {
+    font-size: 0.7rem;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0.5rem;
+}
+
+.sidebar-section:first-child {
+    margin-top: 0;
+}
+
 .sidebar-menu li {
     padding: 0.6rem 0.75rem;
     margin-bottom: 0.25rem;
@@ -261,10 +282,21 @@ html {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #e5e5e5;
 }
 
 .sidebar-menu li .icon {
     opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.sidebar-menu li:hover .icon {
+    opacity: 0.8;
 }
 
 .sidebar-menu li.active {
@@ -386,25 +418,27 @@ html {
     color: #a1a1aa;
 }
 
-/* Game Overrides */
+/* Embedded Demo */
 .game-view {
-    background: #141416;
-    border: 1px solid var(--ide-border);
-    border-radius: 8px;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(79, 70, 229, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    border-radius: 12px;
     padding: 1.5rem;
-    max-width: 480px;
+    max-width: 100%;
     margin-top: 1rem;
     transition: opacity 0.5s ease;
 }
 
-.hud {
+.demo-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 1rem;
+    gap: 1rem;
 }
 
-.score-card {
+.demo-copy {
     display: flex;
     flex-direction: column;
 }
@@ -416,13 +450,17 @@ html {
     font-weight: 600;
 }
 
-#score {
-    font-size: 2.25rem;
-    font-weight: bold;
-    color: white;
+.demo-copy strong {
+    font-size: 1.5rem;
+    color: #fff;
     display: block;
-    line-height: 1;
-    margin-top: 4px;
+    margin-top: 0.35rem;
+}
+
+.demo-copy p {
+    margin: 0.55rem 0 0;
+    color: #a1a1aa;
+    max-width: 520px;
 }
 
 .actions {
@@ -451,33 +489,82 @@ html {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.board-wrap {
+.embed-wrap {
     background: #000;
     border: 1px solid var(--ide-border);
     border-radius: 8px;
     padding: 0.5rem;
+    overflow: hidden;
 }
 
-.board {
-    display: grid;
-    aspect-ratio: 1;
-    background: #0a0a0c;
+.game-embed {
+    width: 100%;
+    min-height: 1100px;
+    border: 0;
+    display: block;
+    background: #09050d;
 }
 
-.cell {
-    border: 1px solid rgba(255, 255, 255, 0.02);
+/* Fullscreen Mode */
+@keyframes fullscreenExpand {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.cell.snake {
-    background: #3b82f6;
-    border-radius: 2px;
+.game-embed.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    z-index: 9999;
+    border-radius: 0;
+    margin: 0;
+    background: #09050d;
+    animation: fullscreenExpand 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.cell.food {
-    background: #ef4444;
-    border-radius: 50%;
-    transform: scale(0.8);
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+.exit-fullscreen-btn {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.exit-fullscreen-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.exit-fullscreen-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 /* Background video and foreground canvas */
@@ -544,4 +631,48 @@ html {
     font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 1.2rem 1rem;
+    }
+
+    .hero {
+        padding: 2.25rem 1rem 3rem;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-actions,
+    .demo-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ide-wrapper {
+        height: auto;
+        margin: 0 12px;
+        flex-direction: column;
+    }
+
+    .ide-sidebar {
+        width: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--ide-border);
+    }
+
+    .ide-content {
+        padding: 1rem;
+    }
+
+    .chat-bubble {
+        max-width: 100%;
+    }
+
+    .game-embed {
+        min-height: 1500px;
+    }
 }

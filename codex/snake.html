@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            background-color: #09050d;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #board {
+            display: grid;
+            width: 400px;
+            height: 400px;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+
+        .cell {
+            width: 100%;
+            height: 100%;
+        }
+
+        .snake {
+            background-color: #4CAF50;
+            border-radius: 4px;
+        }
+
+        .food {
+            background-color: #FF5252;
+            border-radius: 50%;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        #status {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* D-Pad for mobile or mouse */
+        .d-pad {
+            display: grid;
+            grid-template-columns: repeat(3, 40px);
+            grid-template-rows: repeat(3, 40px);
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .d-pad button {
+            padding: 0;
+            font-size: 1.2rem;
+        }
+
+        .d-pad .up {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .d-pad .left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .d-pad .right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .d-pad .down {
+            grid-column: 2;
+            grid-row: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game-container">
+        <div class="stats">
+            <div>Score: <span id="score">0</span></div>
+        </div>
+        <div id="status">Use arrow keys or WASD to start.</div>
+        <div id="board"></div>
+        <div class="controls">
+            <button id="pause-button">Pause</button>
+            <button id="restart-button">Restart</button>
+        </div>
+        <div class="d-pad">
+            <button class="up" data-direction="up">↑</button>
+            <button class="left" data-direction="left">←</button>
+            <button class="right" data-direction="right">→</button>
+            <button class="down" data-direction="down">↓</button>
+        </div>
+    </div>
+    <script src="./snake.js"></script>
+</body>
+
+</html>

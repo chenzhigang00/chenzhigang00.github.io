@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minecraft Dungeons DLC Tribute</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <p class="eyebrow">Playable browser tribute</p>
+      <h1>Minecraft Dungeons DLC Tribute</h1>
+      <p class="subtitle">
+        A chapter-switching tribute to Minecraft Dungeons with five DLC-inspired arenas,
+        themed enemy pressure, emerald drops, dodge rolls, and potion-based survival.
+      </p>
+      <div class="controls">
+        <span><kbd>WASD</kbd> or <kbd>Arrows</kbd> move</span>
+        <span><kbd>Space</kbd> slash</span>
+        <span><kbd>Shift</kbd> roll</span>
+        <span><kbd>E</kbd> potion</span>
+        <span><kbd>R</kbd> restart</span>
+      </div>
+    </section>
+
+    <section class="chapter-panel" aria-label="Minecraft Dungeons chapter selector">
+      <button class="chapter-button active" type="button" data-theme="jungle">Jungle Awakens</button>
+      <button class="chapter-button" type="button" data-theme="depths">Hidden Depths</button>
+      <button class="chapter-button" type="button" data-theme="peaks">Howling Peaks</button>
+      <button class="chapter-button" type="button" data-theme="nether">Flames of the Nether</button>
+      <button class="chapter-button" type="button" data-theme="void">Echoing Void</button>
+    </section>
+
+    <section class="hero-select" aria-label="Minecraft Dungeons hero selector">
+      <button class="hero-button active" type="button" data-hero="knight">
+        <strong>Knight</strong>
+        <span>High health</span>
+      </button>
+      <button class="hero-button" type="button" data-hero="adventurer">
+        <strong>Adventurer</strong>
+        <span>Balanced run</span>
+      </button>
+      <button class="hero-button" type="button" data-hero="ranger">
+        <strong>Ranger</strong>
+        <span>Fast attacks</span>
+      </button>
+      <button class="hero-button" type="button" data-hero="cleric">
+        <strong>Cleric</strong>
+        <span>Stronger potion</span>
+      </button>
+      <button class="hero-button" type="button" data-hero="rogue">
+        <strong>Rogue</strong>
+        <span>Quick roll</span>
+      </button>
+      <button class="hero-button" type="button" data-hero="mage">
+        <strong>Mage</strong>
+        <span>Arcane blade</span>
+      </button>
+    </section>
+
+    <section class="game-panel">
+      <div class="hud">
+        <div class="stat-card">
+          <span class="label">Hero</span>
+          <strong id="heroValue">Knight</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">Chapter</span>
+          <strong id="chapterValue">Jungle</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">Health</span>
+          <strong id="healthValue">100</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">Emeralds</span>
+          <strong id="emeraldValue">0</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">Potion</span>
+          <strong id="potionValue">Ready</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">Wave</span>
+          <strong id="waveValue">1</strong>
+        </div>
+      </div>
+
+      <div class="canvas-frame">
+        <canvas id="game" width="960" height="600" aria-label="Blockfall Dungeons game canvas"></canvas>
+        <div id="overlay" class="overlay">
+          <div class="overlay-card">
+            <p id="overlayEyebrow" class="overlay-eyebrow">Expedition ready</p>
+            <h2 id="overlayTitle">Enter the jungle</h2>
+            <p id="overlayText">
+              Cut through vine-twisted mobs, avoid poison shots, then cross the jungle gateway.
+            </p>
+            <button id="startButton" type="button">Start Run</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="loadout-panel" aria-label="Minecraft Dungeons loadout">
+        <div class="loadout-sidebar">
+          <div class="loadout-hero-card">
+            <p class="loadout-label">Loadout</p>
+            <h3 id="loadoutHeroName">Knight</h3>
+            <p id="loadoutHeroBlurb" class="loadout-copy">Shield-forward frontline</p>
+            <div class="loadout-metrics">
+              <div>
+                <span class="metric-label">Power</span>
+                <strong id="powerValue">0</strong>
+              </div>
+              <div>
+                <span class="metric-label">Melee</span>
+                <strong id="meleeValue">0</strong>
+              </div>
+              <div>
+                <span class="metric-label">Speed</span>
+                <strong id="speedValue">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="equipped-grid">
+            <button id="slotMelee" class="equip-slot" type="button" data-slot="melee"></button>
+            <button id="slotArmor" class="equip-slot" type="button" data-slot="armor"></button>
+            <button id="slotRanged" class="equip-slot" type="button" data-slot="ranged"></button>
+            <button id="slotArtifact1" class="equip-slot" type="button" data-slot="artifact1"></button>
+            <button id="slotArtifact2" class="equip-slot" type="button" data-slot="artifact2"></button>
+            <button id="slotArtifact3" class="equip-slot" type="button" data-slot="artifact3"></button>
+          </div>
+        </div>
+
+        <div class="inventory-section">
+          <div class="inventory-header">
+            <div>
+              <p class="loadout-label">Inventory</p>
+              <h3>Collected Gear</h3>
+            </div>
+            <p id="inventoryCount" class="inventory-count">0 items</p>
+          </div>
+          <div id="inventoryGrid" class="inventory-grid"></div>
+        </div>
+
+        <aside class="detail-panel">
+          <p id="detailRarity" class="detail-rarity">Common</p>
+          <h3 id="detailName">Select an item</h3>
+          <p id="detailPower" class="detail-power">Power 0</p>
+          <ul id="detailStats" class="detail-stats"></ul>
+          <p id="detailDescription" class="detail-description">
+            Pick an item from the inventory to inspect its bonuses.
+          </p>
+          <div class="detail-actions">
+            <button id="equipButton" type="button">Equip</button>
+            <button id="salvageButton" class="secondary-button" type="button">Salvage</button>
+          </div>
+        </aside>
+      </section>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>

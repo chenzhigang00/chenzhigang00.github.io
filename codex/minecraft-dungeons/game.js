@@ -610,6 +610,7 @@ function updateDetailPanel() {
 
   if (!item) {
     detailRarity.textContent = "No item";
+    detailRarity.className = "detail-rarity";
     detailName.textContent = "Inventory empty";
     detailPower.textContent = "Power 0";
     detailDescription.textContent = "Equip or salvage actions will appear when gear is available.";
@@ -620,6 +621,7 @@ function updateDetailPanel() {
   }
 
   detailRarity.textContent = item.rarity;
+  detailRarity.className = `detail-rarity rarity-${item.rarity.toLowerCase()}`;
   detailName.textContent = item.name;
   detailPower.textContent = `Power ${item.power}`;
   detailDescription.textContent = item.description;
@@ -633,7 +635,7 @@ function renderLoadoutSlots() {
     const item = equippedItem(slot);
     button.classList.toggle("selected", Boolean(item && item.id === loadout.selectedId));
     button.innerHTML = item
-      ? `<span class="slot-icon">${item.icon}</span><span class="slot-label">${item.name}</span><span class="slot-type">${slotDisplayName(slot)} · ${item.power}</span>`
+      ? `<span class="slot-icon">${item.icon}</span><span class="slot-label">${item.name}</span><span class="slot-type rarity-${item.rarity.toLowerCase()}">${slotDisplayName(slot)} · ${item.power}</span>`
       : `<span class="slot-icon">□</span><span class="slot-label">Empty</span><span class="slot-type">${slotDisplayName(slot)}</span>`;
   });
 }
@@ -648,7 +650,7 @@ function renderInventory() {
     button.className = "inventory-item";
     if (item.id === loadout.selectedId) button.classList.add("selected");
     if (Object.values(loadout.equipped).includes(item.id)) button.classList.add("equipped");
-    button.innerHTML = `<span class="item-icon">${item.icon}</span><span class="item-name">${item.name}</span><span class="item-rarity">${item.rarity}</span><span class="item-power">Power ${item.power}</span>`;
+    button.innerHTML = `<span class="item-icon">${item.icon}</span><span class="item-name">${item.name}</span><span class="item-rarity rarity-${item.rarity.toLowerCase()}">${item.rarity}</span><span class="item-power">Power ${item.power}</span>`;
     button.addEventListener("click", () => {
       loadout.selectedId = item.id;
       renderLoadout();

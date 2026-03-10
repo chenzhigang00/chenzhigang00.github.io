@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thesis & Engineering Plan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         :root {
@@ -14,15 +16,19 @@
             --surface: rgba(255, 255, 255, 0.03);
             --surface-hover: rgba(255, 255, 255, 0.05);
             --border: rgba(255, 255, 255, 0.08);
-            --primary: #5EEAD4; /* Teal for Thesis */
+            --primary: #5EEAD4;
+            /* Teal for Thesis */
             --primary-transparent: rgba(94, 234, 212, 0.2);
-            --secondary: #F472B6; /* Pink for Eng */
+            --secondary: #F472B6;
+            /* Pink for Eng */
             --secondary-transparent: rgba(244, 114, 182, 0.2);
-            --tertiary: #A78BFA; /* Purple for Game */
+            --tertiary: #A78BFA;
+            /* Purple for Game */
             --tertiary-transparent: rgba(167, 139, 250, 0.2);
-            --rest: #9CA3AF; /* Gray for rest */
+            --rest: #9CA3AF;
+            /* Gray for rest */
             --rest-transparent: rgba(156, 163, 175, 0.2);
-            
+
             --text-main: #F9FAFB;
             --text-muted: #9CA3AF;
             --font-sans: 'Outfit', sans-serif;
@@ -55,6 +61,7 @@
             z-index: -1;
             pointer-events: none;
         }
+
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -62,14 +69,46 @@
             opacity: 0.4;
             animation: float 20s infinite ease-in-out alternate;
         }
-        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: var(--primary-transparent); }
-        .blob-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: var(--secondary-transparent); animation-delay: -5s; }
-        .blob-3 { top: 40%; left: 50%; width: 400px; height: 400px; background: var(--tertiary-transparent); transform: translateX(-50%); animation-delay: -10s; }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--primary-transparent);
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--secondary-transparent);
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: var(--tertiary-transparent);
+            transform: translateX(-50%);
+            animation-delay: -10s;
+        }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, 30px) scale(1.1); }
-            100% { transform: translate(-30px, -50px) scale(0.9); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 30px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-30px, -50px) scale(0.9);
+            }
         }
 
         .container {
@@ -84,6 +123,7 @@
             margin-bottom: 4rem;
             animation: slideDown 0.8s ease-out backwards;
         }
+
         header h1 {
             font-size: 3.5rem;
             font-weight: 800;
@@ -91,19 +131,24 @@
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #fff, #9CA3AF);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         header h1 .highlight {
             background: linear-gradient(135deg, var(--primary), #3b82f6);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         header .subtitle {
             font-size: 1.25rem;
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto 2rem;
         }
+
         .countdown {
             display: inline-flex;
             gap: 1.5rem;
@@ -113,17 +158,20 @@
             border-radius: 100px;
             backdrop-filter: blur(12px);
         }
+
         .countdown-item {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .countdown-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             line-height: 1.2;
         }
+
         .countdown-label {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -137,6 +185,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
+
         @media (max-width: 992px) {
             .layout-grid {
                 grid-template-columns: 1fr;
@@ -154,10 +203,12 @@
             transition: transform 0.3s ease, background 0.3s ease;
             animation: fadeIn 0.8s ease-out backwards;
         }
+
         .card:hover {
             transform: translateY(-4px);
             background: var(--surface-hover);
         }
+
         .card h2 {
             display: flex;
             align-items: center;
@@ -168,6 +219,7 @@
             border-bottom: 1px solid var(--border);
             padding-bottom: 1rem;
         }
+
         .card h2 i {
             color: var(--primary);
             font-size: 1.75rem;
@@ -177,9 +229,11 @@
         .progress-item {
             margin-bottom: 1.5rem;
         }
+
         .progress-item:last-child {
             margin-bottom: 0;
         }
+
         .progress-label {
             display: flex;
             justify-content: space-between;
@@ -187,26 +241,41 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
+
         .progress-bar {
             height: 12px;
             background: var(--surface-hover);
             border-radius: 100px;
             overflow: hidden;
         }
+
         .progress-fill {
             height: 100%;
             border-radius: 100px;
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .fill-thesis { background: linear-gradient(90deg, var(--primary), #2dd4bf); box-shadow: 0 0 10px var(--primary-transparent); }
-        .fill-eng { background: linear-gradient(90deg, var(--secondary), #f43f5e); box-shadow: 0 0 10px var(--secondary-transparent); }
-        .fill-game { background: linear-gradient(90deg, var(--tertiary), #8b5cf6); box-shadow: 0 0 10px var(--tertiary-transparent); }
+
+        .fill-thesis {
+            background: linear-gradient(90deg, var(--primary), #2dd4bf);
+            box-shadow: 0 0 10px var(--primary-transparent);
+        }
+
+        .fill-eng {
+            background: linear-gradient(90deg, var(--secondary), #f43f5e);
+            box-shadow: 0 0 10px var(--secondary-transparent);
+        }
+
+        .fill-game {
+            background: linear-gradient(90deg, var(--tertiary), #8b5cf6);
+            box-shadow: 0 0 10px var(--tertiary-transparent);
+        }
 
         /* Timeline */
         .timeline {
             position: relative;
             padding-left: 1.5rem;
         }
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -217,12 +286,17 @@
             background: var(--surface-hover);
             border-radius: 2px;
         }
+
         .timeline-item {
             position: relative;
             margin-bottom: 1.5rem;
             padding-left: 1.5rem;
         }
-        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -236,16 +310,29 @@
             box-sizing: content-box;
             z-index: 1;
         }
-        .timeline-item.thesis::before { border-color: var(--primary); box-shadow: 0 0 8px var(--primary-transparent); }
-        .timeline-item.eng::before { border-color: var(--secondary); box-shadow: 0 0 8px var(--secondary-transparent); }
-        .timeline-item.game::before { border-color: var(--tertiary); box-shadow: 0 0 8px var(--tertiary-transparent); }
-        
+
+        .timeline-item.thesis::before {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px var(--primary-transparent);
+        }
+
+        .timeline-item.eng::before {
+            border-color: var(--secondary);
+            box-shadow: 0 0 8px var(--secondary-transparent);
+        }
+
+        .timeline-item.game::before {
+            border-color: var(--tertiary);
+            box-shadow: 0 0 8px var(--tertiary-transparent);
+        }
+
         .timeline-time {
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 0.25rem;
             font-weight: 500;
         }
+
         .timeline-content {
             font-size: 1.05rem;
         }
@@ -255,6 +342,7 @@
             list-style: none;
             counter-reset: priority-counter;
         }
+
         .priority-list li {
             position: relative;
             padding-left: 3rem;
@@ -264,6 +352,7 @@
             padding: 1rem 1rem 1rem 3.5rem;
             border-radius: 12px;
         }
+
         .priority-list li::before {
             counter-increment: priority-counter;
             content: counter(priority-counter);
@@ -291,13 +380,16 @@
             overflow-x: auto;
             padding-bottom: 0.5rem;
         }
+
         .tabs-header::-webkit-scrollbar {
             height: 4px;
         }
+
         .tabs-header::-webkit-scrollbar-thumb {
             background: var(--border);
             border-radius: 4px;
         }
+
         .tab-btn {
             background: var(--surface-hover);
             border: 1px solid var(--border);
@@ -310,18 +402,22 @@
             transition: all 0.2s;
             white-space: nowrap;
         }
+
         .tab-btn:hover {
             color: var(--text-main);
             background: var(--border);
         }
+
         .tab-btn.active {
             background: var(--primary-transparent);
             border-color: var(--primary);
             color: var(--primary);
         }
+
         .tab-content {
             animation: fadeIn 0.4s ease-out;
         }
+
         .day-focus {
             display: inline-block;
             background: var(--surface-hover);
@@ -331,9 +427,11 @@
             color: var(--text-muted);
             margin-bottom: 1rem;
         }
+
         .day-agenda {
             list-style: none;
         }
+
         .day-agenda li {
             display: flex;
             align-items: flex-start;
@@ -343,17 +441,30 @@
             border-radius: 12px;
             border-left: 4px solid transparent;
         }
-        .day-agenda li.bd-thesis { border-left-color: var(--primary); }
-        .day-agenda li.bd-eng { border-left-color: var(--secondary); }
-        .day-agenda li.bd-game { border-left-color: var(--tertiary); }
-        .day-agenda li.bd-rest { border-left-color: var(--rest); }
-        
+
+        .day-agenda li.bd-thesis {
+            border-left-color: var(--primary);
+        }
+
+        .day-agenda li.bd-eng {
+            border-left-color: var(--secondary);
+        }
+
+        .day-agenda li.bd-game {
+            border-left-color: var(--tertiary);
+        }
+
+        .day-agenda li.bd-rest {
+            border-left-color: var(--rest);
+        }
+
         .agenda-time {
             min-width: 100px;
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 0.2rem;
         }
+
         .agenda-desc {
             flex: 1;
         }
@@ -364,10 +475,12 @@
             flex-direction: column;
             gap: 1.5rem;
         }
+
         .step {
             display: flex;
             gap: 1.5rem;
         }
+
         .step-marker {
             flex-shrink: 0;
             width: 3rem;
@@ -382,10 +495,12 @@
             color: var(--primary);
             font-size: 1.1rem;
         }
+
         .step-content h4 {
             font-size: 1.1rem;
             margin-bottom: 0.25rem;
         }
+
         .step-content p {
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -397,6 +512,7 @@
             display: grid;
             gap: 0.75rem;
         }
+
         .rule-item {
             display: flex;
             justify-content: space-between;
@@ -404,29 +520,57 @@
             background: var(--surface-hover);
             border-radius: 12px;
         }
+
         .rule-item strong {
             color: var(--tertiary);
         }
 
         /* Animations */
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* Delays for cards */
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .col-2 .card:nth-child(1) { animation-delay: 0.4s; }
-        .col-2 .card:nth-child(2) { animation-delay: 0.5s; }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
 
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Delays for cards */
+        .card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .col-2 .card:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .col-2 .card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="blobs">
@@ -437,8 +581,16 @@
 
     <div class="container">
         <header>
+            <div style="text-align: left; margin-bottom: 2rem;">
+                <a href="/"
+                    style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s;font-weight:500;">
+                    <i class="ph ph-arrow-left" style="font-size: 1.25rem;"></i>
+                    <span>Back to Portal</span>
+                </a>
+            </div>
             <h1>Sprint to <span class="highlight">April 30</span></h1>
-            <p class="subtitle">A strategic 7-week plan balancing your Bachelor Thesis (65-70%) and Engineering Project (30-35%).</p>
+            <p class="subtitle">A strategic 7-week plan balancing your Bachelor Thesis (65-70%) and Engineering Project
+                (30-35%).</p>
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
                     <span class="countdown-value" id="days">00</span>
@@ -458,44 +610,88 @@
         <div class="layout-grid">
             <!-- Left Column -->
             <div class="col-1">
-                
+
                 <div class="card">
                     <h2><i class="ph ph-target"></i>Target Hours / Week</h2>
                     <div class="progress-item">
                         <div class="progress-label"><span>Bachelor Thesis</span> <span>24-28 hrs</span></div>
-                        <div class="progress-bar"><div class="progress-fill fill-thesis" style="width: 0%" data-target="70%"></div></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill fill-thesis" style="width: 0%" data-target="70%"></div>
+                        </div>
                     </div>
                     <div class="progress-item">
                         <div class="progress-label"><span>Engineering Project</span> <span>10-14 hrs</span></div>
-                        <div class="progress-bar"><div class="progress-fill fill-eng" style="width: 0%" data-target="35%"></div></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill fill-eng" style="width: 0%" data-target="35%"></div>
+                        </div>
                     </div>
                     <div class="progress-item">
                         <div class="progress-label"><span>Game Time / Relax</span> <span>7-10 hrs</span></div>
-                        <div class="progress-bar"><div class="progress-fill fill-game" style="width: 0%" data-target="15%"></div></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill fill-game" style="width: 0%" data-target="15%"></div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card">
                     <h2><i class="ph ph-sun"></i>Daily Structure</h2>
-                    <p style="color:var(--text-muted); margin-bottom: 1.5rem; font-size:0.9rem;">The key idea: do your hardest thesis work in the morning when your brain is freshet.</p>
+                    <p style="color:var(--text-muted); margin-bottom: 1.5rem; font-size:0.9rem;">The key idea: do your
+                        hardest thesis work in the morning when your brain is freshet.</p>
                     <div class="timeline">
-                        <div class="timeline-item rest"><div class="timeline-time">05:00</div><div class="timeline-content">Wake up</div></div>
-                        <div class="timeline-item thesis"><div class="timeline-time">05:30 – 08:00</div><div class="timeline-content">Deep work block 1 <span style="color:var(--primary);font-size:0.8rem;margin-left:5px;">(Thesis Focus)</span></div></div>
-                        <div class="timeline-item rest"><div class="timeline-time">08:00 – 09:00</div><div class="timeline-content">Breakfast + get ready</div></div>
-                        <div class="timeline-item thesis"><div class="timeline-time">09:00 – 12:00</div><div class="timeline-content">Deep work block 2</div></div>
-                        <div class="timeline-item rest"><div class="timeline-time">12:00 – 13:00</div><div class="timeline-content">Nap</div></div>
-                        <div class="timeline-item eng"><div class="timeline-time">13:30 – 16:30</div><div class="timeline-content">Work block 3</div></div>
-                        <div class="timeline-item rest"><div class="timeline-time">17:00 – 18:00</div><div class="timeline-content">Sport</div></div>
-                        <div class="timeline-item rest"><div class="timeline-time">18:00 – 19:00</div><div class="timeline-content">Dinner / Shower / Rest</div></div>
-                        <div class="timeline-item rest"><div class="timeline-time">19:30 – 21:00</div><div class="timeline-content">Light work or review</div></div>
-                        <div class="timeline-item game"><div class="timeline-time">21:00 – 22:15</div><div class="timeline-content">Computer game / Relax</div></div>
-                        <div class="timeline-item rest"><div class="timeline-time">22:30</div><div class="timeline-content">Sleep prep (Sleep before 23:00)</div></div>
+                        <div class="timeline-item rest">
+                            <div class="timeline-time">05:00</div>
+                            <div class="timeline-content">Wake up</div>
+                        </div>
+                        <div class="timeline-item thesis">
+                            <div class="timeline-time">05:30 – 08:00</div>
+                            <div class="timeline-content">Deep work block 1 <span
+                                    style="color:var(--primary);font-size:0.8rem;margin-left:5px;">(Thesis Focus)</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item rest">
+                            <div class="timeline-time">08:00 – 09:00</div>
+                            <div class="timeline-content">Breakfast + get ready</div>
+                        </div>
+                        <div class="timeline-item thesis">
+                            <div class="timeline-time">09:00 – 12:00</div>
+                            <div class="timeline-content">Deep work block 2</div>
+                        </div>
+                        <div class="timeline-item rest">
+                            <div class="timeline-time">12:00 – 13:00</div>
+                            <div class="timeline-content">Nap</div>
+                        </div>
+                        <div class="timeline-item eng">
+                            <div class="timeline-time">13:30 – 16:30</div>
+                            <div class="timeline-content">Work block 3</div>
+                        </div>
+                        <div class="timeline-item rest">
+                            <div class="timeline-time">17:00 – 18:00</div>
+                            <div class="timeline-content">Sport</div>
+                        </div>
+                        <div class="timeline-item rest">
+                            <div class="timeline-time">18:00 – 19:00</div>
+                            <div class="timeline-content">Dinner / Shower / Rest</div>
+                        </div>
+                        <div class="timeline-item rest">
+                            <div class="timeline-time">19:30 – 21:00</div>
+                            <div class="timeline-content">Light work or review</div>
+                        </div>
+                        <div class="timeline-item game">
+                            <div class="timeline-time">21:00 – 22:15</div>
+                            <div class="timeline-content">Computer game / Relax</div>
+                        </div>
+                        <div class="timeline-item rest">
+                            <div class="timeline-time">22:30</div>
+                            <div class="timeline-content">Sleep prep (Sleep before 23:00)</div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card">
                     <h2><i class="ph ph-warning-diamond"></i>Golden Rules</h2>
-                    <p style="color:var(--text-muted); margin-bottom: 1rem; font-size:0.95rem;">Every morning ask: <strong>What is the most important thesis task I can finish today?</strong></p>
+                    <p style="color:var(--text-muted); margin-bottom: 1rem; font-size:0.95rem;">Every morning ask:
+                        <strong>What is the most important thesis task I can finish today?</strong>
+                    </p>
                     <ul class="priority-list">
                         <li>Bachelor thesis urgent work</li>
                         <li>Engineering project fixed commitments</li>
@@ -507,7 +703,7 @@
 
             <!-- Right Column -->
             <div class="col-2">
-                
+
                 <div class="card">
                     <h2><i class="ph ph-calendar-check"></i>Weekly Plan</h2>
                     <div class="tabs-header" id="tabs-header">
@@ -576,7 +772,8 @@
 
                 <div class="card">
                     <h2><i class="ph ph-game-controller"></i>Game Time Protection</h2>
-                    <p style="color:var(--text-muted); font-size:0.95rem;">Use game time as a <strong>reward</strong>, not as a default. That way games help you recover instead of making you stressed.</p>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">Use game time as a <strong>reward</strong>,
+                        not as a default. That way games help you recover instead of making you stressed.</p>
                     <div class="game-rules">
                         <div class="rule-item">
                             <span>Weekdays</span>
@@ -608,10 +805,10 @@
         // Countdown Timer to April 30
         const currentYear = new Date().getFullYear();
         let targetDate = new Date(`April 30, ${currentYear} 23:59:59`).getTime();
-        
+
         // If we are already past April 30 in the current year, set to next year
         if (new Date().getTime() > targetDate) {
-           targetDate = new Date(`April 30, ${currentYear + 1} 23:59:59`).getTime();
+            targetDate = new Date(`April 30, ${currentYear + 1} 23:59:59`).getTime();
         }
 
         function updateCountdown() {
@@ -631,48 +828,62 @@
 
         // Weekly Plan Data
         const weeklyData = {
-            mon: { name: "Mon", full: "Monday", focus: "Main focus: Bachelor thesis", points: [
-                { time: "05:30 – 08:00", desc: "Thesis reading / writing", type: "thesis" },
-                { time: "09:00 – 12:00", desc: "Thesis experiment or chapter writing", type: "thesis" },
-                { time: "13:30 – 16:30", desc: "Engineering project", type: "eng" },
-                { time: "19:30 – 21:00", desc: "Thesis light review or paper reading", type: "thesis" },
-                { time: "21:00 – 22:15", desc: "Game time", type: "game" }
-            ]},
-            tue: { name: "Tue", full: "Tuesday", focus: "Main focus: SYSU + Engineering project", points: [
-                { time: "Collocated", desc: "SYSU / Engineering project (Morning and afternoon)", type: "eng" },
-                { time: "Evening", desc: "Light thesis work (reading papers, organizing references, planning)", type: "thesis" },
-                { time: "21:00 – 22:15", desc: "Game or rest (Do not force heavy thesis)", type: "game" }
-            ]},
-            wed: { name: "Wed", full: "Wednesday", focus: "Main focus: Bachelor thesis", points: [
-                { time: "05:30 – 08:00", desc: "Thesis writing", type: "thesis" },
-                { time: "09:00 – 12:00", desc: "Thesis experiment / model testing", type: "thesis" },
-                { time: "13:30 – 16:30", desc: "Thesis figures, notes, or related work", type: "thesis" },
-                { time: "19:30 – 21:00", desc: "Engineering project admin / planning", type: "eng" },
-                { time: "21:00 – 22:15", desc: "Game time", type: "game" }
-            ]},
-            thu: { name: "Thu", full: "Thursday", focus: "Split day", points: [
-                { time: "05:30 – 08:00", desc: "Thesis work", type: "thesis" },
-                { time: "09:00 – 12:00", desc: "Thesis work", type: "thesis" },
-                { time: "13:30 – 16:30", desc: "Engineering project", type: "eng" },
-                { time: "19:30 – 21:00", desc: "Thesis light revision", type: "thesis" },
-                { time: "21:00 – 22:15", desc: "Game time", type: "game" }
-            ]},
-            fri: { name: "Fri", full: "Friday", focus: "Bachelor thesis output day", points: [
-                { time: "05:30 – 16:30", desc: "Intense Thesis Block (Produce visible output: pages, plots, sections)", type: "thesis" },
-                { time: "19:30 – 20:30", desc: "Weekly check: what is done, what is missing", type: "eng" },
-                { time: "20:30 – 22:15", desc: "Game time", type: "game" }
-            ]},
-            sat: { name: "Sat", full: "Saturday", focus: "Half serious, half recovery", points: [
-                { time: "05:30 – 11:30", desc: "Thesis deep work", type: "thesis" },
-                { time: "Afternoon", desc: "Lighter: engineering notes, reading, or rest", type: "eng" },
-                { time: "Evening", desc: "Longer game time to prevent burnout", type: "game" }
-            ]},
-            sun: { name: "Sun", full: "Sunday", focus: "Review + lighter work", points: [
-                { time: "05:30 – 07:30", desc: "Weekly planning (Reset the week)", type: "rest" },
-                { time: "08:00 – 10:30", desc: "Thesis revision / reading", type: "thesis" },
-                { time: "13:30 – 15:30", desc: "Engineering project preparation for Tuesday", type: "eng" },
-                { time: "Evening", desc: "Relaxed, game time, early sleep", type: "game" }
-            ]}
+            mon: {
+                name: "Mon", full: "Monday", focus: "Main focus: Bachelor thesis", points: [
+                    { time: "05:30 – 08:00", desc: "Thesis reading / writing", type: "thesis" },
+                    { time: "09:00 – 12:00", desc: "Thesis experiment or chapter writing", type: "thesis" },
+                    { time: "13:30 – 16:30", desc: "Engineering project", type: "eng" },
+                    { time: "19:30 – 21:00", desc: "Thesis light review or paper reading", type: "thesis" },
+                    { time: "21:00 – 22:15", desc: "Game time", type: "game" }
+                ]
+            },
+            tue: {
+                name: "Tue", full: "Tuesday", focus: "Main focus: SYSU + Engineering project", points: [
+                    { time: "Collocated", desc: "SYSU / Engineering project (Morning and afternoon)", type: "eng" },
+                    { time: "Evening", desc: "Light thesis work (reading papers, organizing references, planning)", type: "thesis" },
+                    { time: "21:00 – 22:15", desc: "Game or rest (Do not force heavy thesis)", type: "game" }
+                ]
+            },
+            wed: {
+                name: "Wed", full: "Wednesday", focus: "Main focus: Bachelor thesis", points: [
+                    { time: "05:30 – 08:00", desc: "Thesis writing", type: "thesis" },
+                    { time: "09:00 – 12:00", desc: "Thesis experiment / model testing", type: "thesis" },
+                    { time: "13:30 – 16:30", desc: "Thesis figures, notes, or related work", type: "thesis" },
+                    { time: "19:30 – 21:00", desc: "Engineering project admin / planning", type: "eng" },
+                    { time: "21:00 – 22:15", desc: "Game time", type: "game" }
+                ]
+            },
+            thu: {
+                name: "Thu", full: "Thursday", focus: "Split day", points: [
+                    { time: "05:30 – 08:00", desc: "Thesis work", type: "thesis" },
+                    { time: "09:00 – 12:00", desc: "Thesis work", type: "thesis" },
+                    { time: "13:30 – 16:30", desc: "Engineering project", type: "eng" },
+                    { time: "19:30 – 21:00", desc: "Thesis light revision", type: "thesis" },
+                    { time: "21:00 – 22:15", desc: "Game time", type: "game" }
+                ]
+            },
+            fri: {
+                name: "Fri", full: "Friday", focus: "Bachelor thesis output day", points: [
+                    { time: "05:30 – 16:30", desc: "Intense Thesis Block (Produce visible output: pages, plots, sections)", type: "thesis" },
+                    { time: "19:30 – 20:30", desc: "Weekly check: what is done, what is missing", type: "eng" },
+                    { time: "20:30 – 22:15", desc: "Game time", type: "game" }
+                ]
+            },
+            sat: {
+                name: "Sat", full: "Saturday", focus: "Half serious, half recovery", points: [
+                    { time: "05:30 – 11:30", desc: "Thesis deep work", type: "thesis" },
+                    { time: "Afternoon", desc: "Lighter: engineering notes, reading, or rest", type: "eng" },
+                    { time: "Evening", desc: "Longer game time to prevent burnout", type: "game" }
+                ]
+            },
+            sun: {
+                name: "Sun", full: "Sunday", focus: "Review + lighter work", points: [
+                    { time: "05:30 – 07:30", desc: "Weekly planning (Reset the week)", type: "rest" },
+                    { time: "08:00 – 10:30", desc: "Thesis revision / reading", type: "thesis" },
+                    { time: "13:30 – 15:30", desc: "Engineering project preparation for Tuesday", type: "eng" },
+                    { time: "Evening", desc: "Relaxed, game time, early sleep", type: "game" }
+                ]
+            }
         };
 
         const tabsHeader = document.getElementById('tabs-header');
@@ -693,11 +904,11 @@
 
         function selectTab(key, btnElement) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
+            if (btnElement) btnElement.classList.add('active');
 
             const data = weeklyData[key];
             dayFocus.innerHTML = `<strong>${data.full}</strong> &mdash; ${data.focus}`;
-            
+
             // Re-trigger animation
             dayAgenda.style.animation = 'none';
             dayAgenda.offsetHeight; /* trigger reflow */
@@ -718,4 +929,5 @@
         loadTabs();
     </script>
 </body>
+
 </html>

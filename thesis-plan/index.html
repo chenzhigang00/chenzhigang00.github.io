@@ -829,59 +829,98 @@
         // Weekly Plan Data
         const weeklyData = {
             mon: {
-                name: "Mon", full: "Monday", focus: "Main focus: Bachelor thesis", points: [
+                name: "Mon",
+                full: "Monday",
+                focus: "Main focus: Bachelor thesis",
+                points: [
                     { time: "05:30 – 08:00", desc: "Thesis reading / writing", type: "thesis" },
                     { time: "09:00 – 12:00", desc: "Thesis experiment or chapter writing", type: "thesis" },
                     { time: "13:30 – 16:30", desc: "Engineering project", type: "eng" },
-                    { time: "19:30 – 21:00", desc: "Thesis light review or paper reading", type: "thesis" },
-                    { time: "21:00 – 22:15", desc: "Game time", type: "game" }
+                    { time: "19:00 – 19:45", desc: "Thesis light review or paper reading", type: "thesis" },
+                    { time: "19:45 – 20:30", desc: "Game time / relax", type: "game" },
+                    { time: "20:30 – 21:00", desc: "Sleep prep / low stimulation", type: "rest" }
                 ]
             },
+        
             tue: {
-                name: "Tue", full: "Tuesday", focus: "Main focus: SYSU + Engineering project", points: [
-                    { time: "Collocated", desc: "SYSU / Engineering project (Morning and afternoon)", type: "eng" },
-                    { time: "Evening", desc: "Light thesis work (reading papers, organizing references, planning)", type: "thesis" },
-                    { time: "21:00 – 22:15", desc: "Game or rest (Do not force heavy thesis)", type: "game" }
+                name: "Tue",
+                full: "Tuesday",
+                focus: "Main focus: SYSU + Engineering project",
+                points: [
+                    { time: "Morning – Afternoon", desc: "SYSU / Engineering project", type: "eng" },
+                    { time: "19:00 – 19:45", desc: "Light thesis work (reading papers, organizing references, planning)", type: "thesis" },
+                    { time: "19:45 – 20:30", desc: "Game or rest", type: "game" },
+                    { time: "20:30 – 21:00", desc: "Sleep prep / low stimulation", type: "rest" }
                 ]
             },
+        
             wed: {
-                name: "Wed", full: "Wednesday", focus: "Main focus: Bachelor thesis", points: [
+                name: "Wed",
+                full: "Wednesday",
+                focus: "Main focus: Bachelor thesis",
+                points: [
                     { time: "05:30 – 08:00", desc: "Thesis writing", type: "thesis" },
                     { time: "09:00 – 12:00", desc: "Thesis experiment / model testing", type: "thesis" },
                     { time: "13:30 – 16:30", desc: "Thesis figures, notes, or related work", type: "thesis" },
-                    { time: "19:30 – 21:00", desc: "Engineering project admin / planning", type: "eng" },
-                    { time: "21:00 – 22:15", desc: "Game time", type: "game" }
+                    { time: "19:00 – 19:45", desc: "Engineering project admin / planning", type: "eng" },
+                    { time: "19:45 – 20:30", desc: "Game time / relax", type: "game" },
+                    { time: "20:30 – 21:00", desc: "Sleep prep / low stimulation", type: "rest" }
                 ]
             },
+        
             thu: {
-                name: "Thu", full: "Thursday", focus: "Split day", points: [
+                name: "Thu",
+                full: "Thursday",
+                focus: "Split day",
+                points: [
                     { time: "05:30 – 08:00", desc: "Thesis work", type: "thesis" },
                     { time: "09:00 – 12:00", desc: "Thesis work", type: "thesis" },
                     { time: "13:30 – 16:30", desc: "Engineering project", type: "eng" },
-                    { time: "19:30 – 21:00", desc: "Thesis light revision", type: "thesis" },
-                    { time: "21:00 – 22:15", desc: "Game time", type: "game" }
+                    { time: "19:00 – 19:45", desc: "Thesis light revision", type: "thesis" },
+                    { time: "19:45 – 20:30", desc: "Game time / relax", type: "game" },
+                    { time: "20:30 – 21:00", desc: "Sleep prep / low stimulation", type: "rest" }
                 ]
             },
+        
             fri: {
-                name: "Fri", full: "Friday", focus: "Bachelor thesis output day", points: [
-                    { time: "05:30 – 16:30", desc: "Intense Thesis Block (Produce visible output: pages, plots, sections)", type: "thesis" },
-                    { time: "19:30 – 20:30", desc: "Weekly check: what is done, what is missing", type: "eng" },
-                    { time: "20:30 – 22:15", desc: "Game time", type: "game" }
+                name: "Fri",
+                full: "Friday",
+                focus: "Bachelor thesis output day",
+                points: [
+                    { time: "05:30 – 08:00", desc: "Thesis deep work", type: "thesis" },
+                    { time: "09:00 – 12:00", desc: "Thesis output block (pages, plots, sections)", type: "thesis" },
+                    { time: "13:30 – 16:30", desc: "Thesis output block (finish visible results)", type: "thesis" },
+                    { time: "19:00 – 19:30", desc: "Weekly check: what is done, what is missing", type: "eng" },
+                    { time: "19:30 – 20:30", desc: "Game time / relax", type: "game" },
+                    { time: "20:30 – 21:00", desc: "Sleep prep / low stimulation", type: "rest" }
                 ]
             },
+        
             sat: {
-                name: "Sat", full: "Saturday", focus: "Half serious, half recovery", points: [
-                    { time: "05:30 – 11:30", desc: "Thesis deep work", type: "thesis" },
-                    { time: "Afternoon", desc: "Lighter: engineering notes, reading, or rest", type: "eng" },
-                    { time: "Evening", desc: "Longer game time to prevent burnout", type: "game" }
+                name: "Sat",
+                full: "Saturday",
+                focus: "Half serious, half recovery",
+                points: [
+                    { time: "05:30 – 08:00", desc: "Thesis deep work block 1", type: "thesis" },
+                    { time: "09:00 – 11:30", desc: "Thesis deep work block 2", type: "thesis" },
+                    { time: "13:30 – 15:30", desc: "Lighter: engineering notes, reading, or rest", type: "eng" },
+                    { time: "18:30 – 20:00", desc: "Longer game time / relax", type: "game" },
+                    { time: "20:00 – 20:45", desc: "Slow down / recovery", type: "rest" },
+                    { time: "20:45 – 21:15", desc: "Sleep prep", type: "rest" }
                 ]
             },
+        
             sun: {
-                name: "Sun", full: "Sunday", focus: "Review + lighter work", points: [
-                    { time: "05:30 – 07:30", desc: "Weekly planning (Reset the week)", type: "rest" },
+                name: "Sun",
+                full: "Sunday",
+                focus: "Review + lighter work",
+                points: [
+                    { time: "05:30 – 07:00", desc: "Weekly planning / reset the week", type: "rest" },
                     { time: "08:00 – 10:30", desc: "Thesis revision / reading", type: "thesis" },
                     { time: "13:30 – 15:30", desc: "Engineering project preparation for Tuesday", type: "eng" },
-                    { time: "Evening", desc: "Relaxed, game time, early sleep", type: "game" }
+                    { time: "18:30 – 19:45", desc: "Relax / game time", type: "game" },
+                    { time: "19:45 – 20:30", desc: "Early wind-down", type: "rest" },
+                    { time: "20:30 – 21:00", desc: "Sleep prep", type: "rest" }
                 ]
             }
         };

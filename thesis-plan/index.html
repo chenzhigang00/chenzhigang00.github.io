@@ -372,6 +372,30 @@
             font-size: 0.9rem;
         }
 
+        /* Bullet List */
+        .bullet-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .bullet-list li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
         /* Tabs for Weekly Plan */
         .tabs-header {
             display: flex;
@@ -699,6 +723,35 @@
                     </ul>
                 </div>
 
+                <div class="card">
+                    <h2><i class="ph ph-clock"></i>30-Minute Blocks</h2>
+                    <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom: 1rem;">
+                        They are useful, but <strong>not for heavy deep work</strong>.<br>
+                        They work best for light review, reading abstracts, cleaning notes, organizing references,
+                        outlining, fixing a small bug, planning, or small visible outputs.
+                    </p>
+                    <p style="color:var(--text-main); font-size:0.95rem; margin-bottom: 0.5rem; font-weight: 500;">To
+                        make a 30-minute block valuable:</p>
+                    <ul class="bullet-list" style="margin-bottom: 1.5rem;">
+                        <li>Decide <strong>one tiny output</strong> before starting</li>
+                        <li>Do something that leaves a <strong>visible result</strong></li>
+                        <li>Do not let the task expand</li>
+                        <li>Use it for <strong>review, maintenance, preparation, or restart</strong></li>
+                    </ul>
+                    <div class="game-rules">
+                        <div class="rule-item" style="display: block;">
+                            <span style="color:var(--primary); font-weight:600;">Good idea:</span><br>
+                            <span style="color:var(--text-muted); font-size: 0.9rem;">"write 5 bullets", "clean one
+                                figure", "organize 3 references"</span>
+                        </div>
+                        <div class="rule-item" style="display: block;">
+                            <span style="color:var(--secondary); font-weight:600;">Bad idea:</span><br>
+                            <span style="color:var(--text-muted); font-size: 0.9rem;">"finish the chapter", "solve the
+                                whole problem"</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Right Column -->
@@ -790,6 +843,43 @@
                     </div>
                 </div>
 
+                <div class="card">
+                    <h2><i class="ph ph-squares-four"></i>Blank Blocks Strategy</h2>
+                    <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom: 1rem;">
+                        Blank blocks should not be truly empty. They should act as <strong>buffer</strong>,
+                        <strong>transition</strong>, <strong>recovery</strong>, or <strong>maintenance</strong>.
+                    </p>
+                    <ul class="bullet-list" style="margin-bottom: 1.5rem;">
+                        <li>If tired &rarr; use blank block for <strong>recovery</strong> (lunch, nap)</li>
+                        <li>If behind &rarr; use it as <strong>buffer</strong></li>
+                        <li>If okay &rarr; use it for <strong>transition or maintenance</strong> (breakfast, short walk,
+                            shower, pack up, commute)</li>
+                    </ul>
+                    <p style="color:var(--text-main); font-size:0.95rem; font-weight: 500;">
+                        Label blank blocks clearly to prevent them from turning into accidental phone/game time.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2><i class="ph ph-moon-stars"></i>Wind Down & Sleep Prep</h2>
+
+                    <h4 style="margin-bottom: 0.5rem; color: var(--primary); font-size: 1.05rem;">Wind down = calm the
+                        brain</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom: 1.5rem;">
+                        <strong>Reduce stimulation</strong> so your brain stops acting like it is still daytime.<br>
+                        <em>Actions:</em> stop work and game, dim lights, tidy desk, prepare tomorrow's first task,
+                        light stretching, calm music, no exciting phone content.
+                    </p>
+
+                    <h4 style="margin-bottom: 0.5rem; color: var(--tertiary); font-size: 1.05rem;">Sleep prep = get
+                        ready for sleep</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        The practical routine that gets your body and environment ready.<br>
+                        <em>Actions:</em> shower, brush teeth, wash face, toilet, set alarm, put phone away from bed,
+                        lights low, get into bed.
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -841,7 +931,7 @@
                     { time: "20:15 – 21:00", desc: "Shower / wind down / sleep prep", type: "rest" }
                 ]
             },
-        
+
             tue: {
                 name: "Tue",
                 full: "Tuesday",
@@ -853,7 +943,7 @@
                     { time: "20:15 – 21:00", desc: "Wind down / sleep prep", type: "rest" }
                 ]
             },
-        
+
             wed: {
                 name: "Wed",
                 full: "Wednesday",
@@ -867,7 +957,7 @@
                     { time: "20:15 – 21:00", desc: "Wind down / sleep prep", type: "rest" }
                 ]
             },
-        
+
             thu: {
                 name: "Thu",
                 full: "Thursday",
@@ -881,7 +971,7 @@
                     { time: "20:15 – 21:00", desc: "Wind down / sleep prep", type: "rest" }
                 ]
             },
-        
+
             fri: {
                 name: "Fri",
                 full: "Friday",
@@ -896,7 +986,7 @@
                     { time: "20:15 – 21:00", desc: "Shower / wind down / sleep prep", type: "rest" }
                 ]
             },
-        
+
             sat: {
                 name: "Sat",
                 full: "Saturday",
@@ -909,7 +999,7 @@
                     { time: "20:00 – 21:00", desc: "Recovery / slow down / sleep prep", type: "rest" }
                 ]
             },
-        
+
             sun: {
                 name: "Sun",
                 full: "Sunday",
